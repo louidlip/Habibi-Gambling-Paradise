@@ -27,4 +27,4 @@ Utilisation de **pygame** pour programmer le jeu
 ![image](https://github.com/user-attachments/assets/272cd0ce-3ff6-4fdc-b063-ab3fee4bc827)
 
 
-
+## **Cahier des Charges:**
