@@ -9,9 +9,9 @@ Lipuma Louis (code et designer)
 **Projet**: Jeu de Casino avec différentes activités ( roulette, machine à sou, dés etc...)
 Écran titre avec des onglet "start game", "settings" et "quit game".
 
-Utilisation de pygame pour programmer le jeu
+Utilisation de **pygame** pour programmer le jeu
 
-Lobby pour séléctionner les différents jeux et une option tutoriel et un shop avec des cosmétiques:
+**Lobby** pour selectionner les différents jeux et une option tutoriel et un shop avec des cosmetics:
 ![image](https://github.com/user-attachments/assets/86159d56-1140-4f99-b8bd-22f68a9b1e46)
 
 
