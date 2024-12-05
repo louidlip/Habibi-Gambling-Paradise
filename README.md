@@ -155,6 +155,16 @@ Développement du mini-jeu Machine à sous et Dés
 ### Séance 8 :
 Finalisation des mini-jeux
 
+### Séance 9 :
+Développement du tutoriel qui explique les règles de chaque mini-jeu
+Programmes les interactions du joueur avec le tutoriel (accès via le Bartender)
+
+--> Tests
+
+###  Séance 10 :
+Développement du menu de settings (volume de la musique, effets sonores).
+Ajouter une option des paramètres de jeu.
+
 
 # Premières images réels du jeu (faites par nous meme)
 
