@@ -19,7 +19,7 @@ Lobby pour séléctionner les différents jeux et une option tutoriel et un shop
 
 
 
-Differents minigames accecible du lobby:
+## **Differents minigames accecible du lobby:**
 
 ![image](https://github.com/user-attachments/assets/53611c28-d83c-4e16-8e5c-5784f9f06323)
 ![image](https://github.com/user-attachments/assets/013a617f-8e52-4cfd-adb5-5759c973f132)
