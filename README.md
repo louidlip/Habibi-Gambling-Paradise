@@ -13,6 +13,8 @@ Lipuma Louis (code et designer)
 Utilisation de **pygame** pour programmer le jeu
 
 **Lobby** pour selectionner les différents jeux et une option tutoriel et un shop avec des cosmetics:
+![image](https://github.com/user-attachments/assets/5ba76a6d-e2c9-422a-8ab6-300e8aea31af)
+
 ![image](https://github.com/user-attachments/assets/86159d56-1140-4f99-b8bd-22f68a9b1e46)
 
 
