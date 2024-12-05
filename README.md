@@ -1,5 +1,6 @@
 README.md
 
+
 ## **Membres du groupe :**
 Garotta Hugo (code et musique)
 Kimpfler Jakob (code et auteur de l'histoire)
