@@ -87,8 +87,7 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 # Images exemples pour s'imaginer le jeu
 
 **Ecran titre :**
-
-![image](https://github.com/user-attachments/assets/20f9532c-3c4e-481d-81f0-726f435e13ad)
+<img src="https://github.com/user-attachments/assets/20f9532c-3c4e-481d-81f0-726f435e13ad" width="400" />
 
 <img src="https://github.com/user-attachments/assets/5ba76a6d-e2c9-422a-8ab6-300e8aea31af" width="400" />
 
