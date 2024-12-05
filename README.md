@@ -4,19 +4,19 @@ README.md
 ## **Cahier des Charges:**
 ### **Membres du groupe :**
 
-•	Garotta Hugo : Code et musique
-•	Kimpfler Jakob : Code et auteur de l'histoire
-•	Kirsten Fynn : Code, co-auteur de l'histoire, et co-designer
-•	Lipuma Louis : Code et designer
+•	Garotta Hugo : Code et musique  
+•	Kimpfler Jakob : Code et auteur de l'histoire  
+•	Kirsten Fynn : Code, co-auteur de l'histoire, et co-designer  
+•	Lipuma Louis : Code et designer  
 
 ### **Projet : Jeu de Casino avec différentes activités**
 ### 1. Objectif du projet :
-Développer un jeu de casino avec plusieurs mini-jeux populaires :
+Développer un jeu de casino avec plusieurs mini-jeux populaires :  
 
-•	Roulette
-•	Slots (machines a sous)
-•	Dés
-•	Black Jack
+•	Roulette  
+•	Slots (machines a sous)  
+•	Dés  
+•	Black Jack  
 
 
 Le jeu sera conçu à l'aide de Pygame.
