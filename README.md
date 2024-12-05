@@ -29,3 +29,57 @@ Utilisation de **pygame** pour programmer le jeu
 
 
 ## **Cahier des Charges:**
+Cahier des Charges du Jeu de Casino
+Membres du groupe :
+•	Garotta Hugo : Code et musique
+•	Kimpfler Jakob : Code et auteur de l'histoire
+•	Kirsten Fynn : Code, co-auteur de l'histoire, et co-designer
+•	Lipuma Louis : Code et designer
+Projet : Jeu de Casino avec différentes activités
+1. Objectif du projet :
+Développer un jeu de casino comprenant plusieurs mini-jeux populaires :
+•	Roulette
+•	Slots (machines a sous)
+•	Dés
+•	Black Jack
+Le jeu sera conçu à l'aide de Pygame.
+2. Différents fonctionnalités :
+a. Écran titre :
+L'écran titre du jeu comportera les onglets suivants :
+•	Start Game : Démarre le jeu.
+•	Settings : Pour modifier les paramètres du jeu, tels que le volume de la musique, les options graphiques et la difficulté.
+•	Quit Game : Quitte le jeu.
+b. Lobby principal :
+Une fois le jeu démarré, l'utilisateur accède à un lobby où il peut choisir parmi les différents jeux de casino proposés :
+•	Roulette
+•	Machine à sous
+•	Dés
+•	Black Jack
+Le lobby comprendra également les options suivantes :
+•	Tutoriel : Qui peut être accéder par le Bartender a gauche de la salle.
+•	Shop : Un magasin où les joueurs peuvent acheter des cosmétiques pour personnaliser leur expérience de jeu (par exemple, skins, fonds d'écran, effets sonores).
+c. Jeux disponibles :
+1.	Roulette : Jeu classique de casino où les joueurs parient sur la couleur, le numéro, ou le groupe de numéros sur lesquels la balle va atterrir.
+2.	Machine à sous : Un jeu de machine à sous avec des rouleaux et des symboles variés. Le but est d’aligner des symboles similaires pour remporter des gains.
+3.	Dés : Un jeu où les joueurs lancent des dés et parient sur le résultat.
+4.	Black Jack : Jeu de cartes où le but est d’avoir une main dont la somme des valeurs est la plus proche de 21 sans la dépasser.
+d. Menu et interface :
+•	Graphismes : Des éléments graphiques simples et efficaces, adaptés à l’univers du casino.
+•	Sons et musique : Musique de fond adaptée à l'ambiance du casino, avec des effets sonores pour chaque action dans les jeux (exemple : bruit de la roulette, bruit des cartes, etc.).
+e. Éléments du Shop :
+Le shop proposera des cosmétiques tels que :
+•	Skins pour les tables de jeux (par exemple, table de roulette en bois ou en marbre).
+•	Cartes personnalisées pour le Black Jack.
+•	Effets visuels comme des animations supplémentaires lors des gains ou pertes.
+•	Musique et effets sonores supplémentaires à acheter.
+f. Tutoriel :
+Un tutoriel qui donne des explications sur le jeux demander . Ce tutoriel sera disponible depuis le lobby, et le joueur pourra le consulter à tout moment.
+3. Technologies utilisées :
+•	Pygame : Pour la création du jeu 2D et la gestion des interactions utilisateur (graphismes, sons, entrées).
+•	Python : Langage de programmation principal.
+•	Bibliothèques supplémentaires (si nécessaire) : Pour les sons, animations, gestion des fichiers de configuration, etc.
+4. Tâches et responsabilités :
+•	Garotta Hugo : Développement du code pour la gestion de la musique et des sons, ainsi que le développement d'éléments liés à l'interface.
+•	Kimpfler Jakob : Création de l'histoire du jeu et du code de base pour les différentes mécaniques de jeux (roulette, blackjack, etc.).
+•	Kirsten Fynn : Co-auteur de l’histoire, co-designer des éléments visuels et programmation des interactions dans les jeux. Le Joker.
+•	Lipuma Louis : Design des éléments visuels et création des différentes interfaces et animations des jeux.
