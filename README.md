@@ -156,4 +156,6 @@ Développement du mini-jeu Machine à sous et Dés
 Finalisation des mini-jeux
 
 
+# Premières images réels du jeu (faites par nous meme)
+
 
