@@ -21,6 +21,13 @@ Utilisation de **pygame** pour programmer le jeu
 
 
 ## **Differents minigames accecible du lobby:**
+![image](https://github.com/user-attachments/assets/c58d7042-476d-4b37-a959-e5cd45a554ac)
+![image](https://github.com/user-attachments/assets/6c9d63e4-819f-43bf-a10b-68f073282c87)
+![image](https://github.com/user-attachments/assets/0f31117d-55fa-4ced-8e71-0751b0f7feb5)
+![image](https://github.com/user-attachments/assets/256d24c1-88cc-4b56-b962-c895b2f836ff)
+
+
+
 
 ![image](https://github.com/user-attachments/assets/53611c28-d83c-4e16-8e5c-5784f9f06323)
 ![image](https://github.com/user-attachments/assets/013a617f-8e52-4cfd-adb5-5759c973f132)
