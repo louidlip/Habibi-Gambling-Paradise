@@ -36,6 +36,11 @@ Utilisation de **pygame** pour programmer le jeu
 ![image](https://github.com/user-attachments/assets/19413771-7c15-45ff-807b-0cc91769f5a1)
 ![image](https://github.com/user-attachments/assets/272cd0ce-3ff6-4fdc-b063-ab3fee4bc827)
 
+Musique 8 bit typique d'un Jeu NES, un peu orientale :
+3 musiques au total : 
+-Une musique pour l'écran titre (un peu orientale et de désert)
+-Une musique pour le lobby simple typique d'un menu d'un jeu NES
+-Une musique pour les mini jeux un peu plus complexe
 
 ## **Cahier des Charges:**
 Cahier des Charges du Jeu de Casino
