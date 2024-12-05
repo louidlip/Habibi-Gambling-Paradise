@@ -154,18 +154,22 @@ Hugo : Test des cartes de Blackjack, gestion combinaisons gagnantes
 Lipuma Louis : Finalisation des visuels des cartes et de la table du blackjack
 
 ### Séance 7 :
-Développement du mini-jeu Machine à sous et Dés
-• Machine à sous : Définition de la logique du jeu
-• Dés : Programmation du lancer de dés et calcul des gains
+Développement des mini-jeux Machine à Sous et Dés.
+( Jakob Hugo ) Machine à sous : Créer la logique des rouleaux et des symboles.
+( Fynn Louis ) Dés : Programmer le lancer de dés et calcul des résultats.
 
 ### Séance 8 :
-Finalisation des mini-jeux
+Finaliser les mini-jeux (Roulette, Blackjack, Machine à sous et Dés).
+Ajouter des animations finales et tester la logique complète des jeux.
 
 ### Séance 9 :
-Développement du tutoriel qui explique les règles de chaque mini-jeu
-Programmes les interactions du joueur avec le tutoriel (accès via le Bartender)
+Développement du tutoriel du jeu expliquant les règles de chaque mini-jeu
+Interaction avec le Bartender (personnage pour accéder au tutoriel)
+Tests des mini jeux
+Tâches :
 
---> Tests
+Louis Jakob : Développement du dialogue du Bartender, ajout d'options interactives pour choisir le jeu à apprendre.
+Kirsten Fynn : Design de l'interface tutoriel avec visuels pour chaque mini-jeu.
 
 ###  Séance 10 :
 Développement du menu de settings (volume de la musique, effets sonores).
