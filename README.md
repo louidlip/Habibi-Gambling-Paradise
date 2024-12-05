@@ -25,7 +25,7 @@ Ecran titre :
 
 
 
-## **Differents minigames accecible du lobby:**
+## **Differents minigames accessible du lobby:**
 ![image](https://github.com/user-attachments/assets/c58d7042-476d-4b37-a959-e5cd45a554ac)
 ![image](https://github.com/user-attachments/assets/6c9d63e4-819f-43bf-a10b-68f073282c87)
 ![image](https://github.com/user-attachments/assets/0f31117d-55fa-4ced-8e71-0751b0f7feb5)
