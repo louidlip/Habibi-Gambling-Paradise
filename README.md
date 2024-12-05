@@ -27,7 +27,12 @@ Ecran titre :
 
 ## **Differents minigames accessible du lobby:**
 
-![]([https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png](https://github.com/user-attachments/assets/53611c28-d83c-4e16-8e5c-5784f9f06323) =250x250)
+<img src="https://github.com/user-attachments/assets/53611c28-d83c-4e16-8e5c-5784f9f06323" width="300" />
+<img src="https://github.com/user-attachments/assets/013a617f-8e52-4cfd-adb5-5759c973f132" width="300" />
+<img src="https://github.com/user-attachments/assets/19413771-7c15-45ff-807b-0cc91769f5a1" width="300" />
+<img src="https://github.com/user-attachments/assets/272cd0ce-3ff6-4fdc-b063-ab3fee4bc827" width="300" />
+
+
 ![image](https://github.com/user-attachments/assets/53611c28-d83c-4e16-8e5c-5784f9f06323)
 ![image](https://github.com/user-attachments/assets/013a617f-8e52-4cfd-adb5-5759c973f132)
 ![image](https://github.com/user-attachments/assets/19413771-7c15-45ff-807b-0cc91769f5a1)
