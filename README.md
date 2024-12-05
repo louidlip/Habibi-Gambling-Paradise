@@ -35,9 +35,10 @@ Ecran titre :
 
 Musique 8 bit typique d'un Jeu NES, un peu orientale :
 3 musiques au total : 
--Une musique pour l'écran titre (un peu orientale et de désert)
+-Une musique pour l'écran titre ressemblante à celle ci (Hugo va s'occuper de retravailler la musique dans un style retro) https://www.youtube.com/watch?v=fA0wBk-SQjo
 -Une musique pour le lobby simple typique d'un menu d'un jeu NES
 -Une musique pour les mini jeux un peu plus complexe
+
 
 ## **Cahier des Charges:**
 Cahier des Charges du Jeu de Casino
