@@ -114,3 +114,46 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 -Une musique pour l'écran titre ressemblante à celle ci (Hugo va s'occuper de retravailler la musique dans un style retro) https://www.youtube.com/watch?v=fA0wBk-SQjo
 -Une musique pour le lobby simple typique d'un menu d'un jeu NES
 -Une musique pour les mini jeux un peu plus complexe
+
+# Planning: 
+
+### Séance 1 :
+•	Rédaction du README.md
+•	Distribution des tâches
+•	Brainstorming des idées principales du jeu
+
+### Séance 2 :
+•	Création du cahier des charges
+•	Recherche d'images pour illustrer le jeu
+•	Création des images la page d'accueil du jeu
+•	Recherche de musiques et complétion du README
+
+### Séance 3 :
+Programmation de l'écran titre avec les options de base : Start Game, Settings, Quitter
+Travail sur les premiers éléments graphiques pour l'écran titre (design, animations de base)
+Préparation de la première musique (écran titre)
+
+### Séance 4 :
+**Développement du lobby :**
+Création de l'interface du lobby où le joueur choisit les mini-jeux
+Programmation des touches pour naviguer entre les jeux
+Travail sur la musique pour le lobby et les effets sonores de base (Hugo)
+
+### Séance 5 :
+•2 personnes commencent à travailler sur la Roulette
+•2 autres personnes commencent à travailler sur le Blackjack
+
+### Séance 6 :
+Poursuite du travail sur la Roulette et Blackjack :
+• Intégration de la logique des jeux (paris, calculs des gains)
+
+### Séance 7 :
+Développement du mini-jeu Machine à sous et Dés
+• Machine à sous : Définition de la logique du jeu
+• Dés : Programmation du lancer de dés et calcul des gains
+
+### Séance 8 :
+Finalisation des mini-jeux
+
+
+
