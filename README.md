@@ -149,32 +149,48 @@ Hugo et Louis : Interface du Blackjack, programmation des cartes et règles du j
 ### Séance 6 :
 Finaliser la logique des jeux de la roulette et du blackjack
 Tester les mécaniques de jeu : paris, gains et perte de crédits
-Kimpfler Jakob : Finalisation de la logique de paris, gestion des crédits
+Jakob Fynn : Finalisation de la logique de paris, gestion des crédits
 Hugo : Test des cartes de Blackjack, gestion combinaisons gagnantes
 Lipuma Louis : Finalisation des visuels des cartes et de la table du blackjack
 
 ### Séance 7 :
 Développement des mini-jeux Machine à Sous et Dés.
-( Jakob Hugo ) Machine à sous : Créer la logique des rouleaux et des symboles.
-( Fynn Louis ) Dés : Programmer le lancer de dés et calcul des résultats.
+( Jakob Hugo ) Machine à sous : Créer la logique des rouleaux et des symboles
+( Fynn Louis ) Dés : Programmer le lancer de dés et calcul des résultats
 
 ### Séance 8 :
-Finaliser les mini-jeux (Roulette, Blackjack, Machine à sous et Dés).
-Ajouter des animations finales et tester la logique complète des jeux.
+Finaliser les mini-jeux (Roulette, Blackjack, Machine à sous et Dés)
+Ajouter des animations finales et tester la logique complète des jeux
 
 ### Séance 9 :
-Développement du tutoriel du jeu expliquant les règles de chaque mini-jeu
-Interaction avec le Bartender (personnage pour accéder au tutoriel)
-Tests des mini jeux
-Tâches :
+(Jakob) Développement du tutoriel du jeu expliquant les règles de chaque mini-jeu
+(Hugo Fynn) Interaction avec le Bartender
+(Louis) Tests des mini jeux
 
-Louis Jakob : Développement du dialogue du Bartender, ajout d'options interactives pour choisir le jeu à apprendre.
-Kirsten Fynn : Design de l'interface tutoriel avec visuels pour chaque mini-jeu.
 
 ###  Séance 10 :
-Développement du menu de settings (volume de la musique, effets sonores).
-Ajouter une option des paramètres de jeu.
+(Hugo et Louis) Développement du menu de settings (volume de la musique, effets sonores)
+(Fynn et JAkob) Ajouter une option des paramètres de jeu
 
+### Séance 11 :
+Hugo et Louis : Création des premiers éléments du shop (cosmétiques simples pour le lobby)
+Jakob et Fynn : Essayent l'ajout d’une option pour sauvegarder et charger les crédits des joueurs
+
+### Séance 12 :
+Hugo et Jakob : Finalisation de la musique et des effets sonores des mini-jeux
+Louis et Fynn : Design avancé du shop (ajout des effets visuels et interface utilisateur)
+
+### Séance 13 :
+Tous les membres : Test complet de tous les mini-jeux (recherche de bugs et correction)
+Finalisation des mécaniques de probalitie
+
+### Séance 14 :
+Hugo et Fynn : Optimisation du tutoriel (ajout de sections interactives pour expliquer les règles)
+Louis et Jakob : Finalisation des animations du jeu (transitions et effets spéciaux)
+
+### Séance 15 :
+Assemblage final du projet
+Préparation de la diapo pour la presentation
 
 # Premières images réels du jeu (faites par nous meme)
 
