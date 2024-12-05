@@ -129,23 +129,29 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 •	Recherche de musiques et complétion du README
 
 ### Séance 3 :
-Programmation de l'écran titre avec les options de base : Start Game, Settings, Quitter
-Travail sur les premiers éléments graphiques pour l'écran titre (design, animations de base)
-Préparation de la première musique (écran titre)
+Programmation de l'écran titre avec les options de base : Start Game, Settings, Quitter ( Louis Fynn ) 
+Travail sur les premiers éléments graphiques pour l'écran titre (design, animations de base ( Jakob Hugo )
+Préparation de la première musique (écran titre) --> Hugo
 
 ### Séance 4 :
-**Développement du lobby :**
-Création de l'interface du lobby où le joueur choisit les mini-jeux
-Programmation des touches pour naviguer entre les jeux
-Travail sur la musique pour le lobby et les effets sonores de base (Hugo)
+Développer le lobby principal du jeu, interface permettant de choisir parmi les mini-jeux ( Louis Jakob ) 
+Programmation des touches de navigation entre les jeux ( Fynn Hugo )
+Développement de la musique du lobby et des premiers effets sonores pour l'interface --> Hugo
 
 ### Séance 5 :
 •2 personnes commencent à travailler sur la Roulette
 •2 autres personnes commencent à travailler sur le Blackjack
 
+Tahces spécifiques:
+Fynn et Jakob : Logiciel de la roulette, calculs de paris et gains, interface du jeu
+Hugo et Louis : Interface du Blackjack, programmation des cartes et règles du jeu
+
 ### Séance 6 :
-Poursuite du travail sur la Roulette et Blackjack :
-• Intégration de la logique des jeux (paris, calculs des gains)
+Finaliser la logique des jeux de la roulette et du blackjack
+Tester les mécaniques de jeu : paris, gains et perte de crédits
+Kimpfler Jakob : Finalisation de la logique de paris, gestion des crédits
+Hugo : Test des cartes de Blackjack, gestion combinaisons gagnantes
+Lipuma Louis : Finalisation des visuels des cartes et de la table du blackjack
 
 ### Séance 7 :
 Développement du mini-jeu Machine à sous et Dés
