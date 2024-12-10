@@ -193,6 +193,7 @@ Assemblage final du projet
 Préparation de la diapo pour la presentation  
 
 # Premières images réels du jeu (faites par nous meme)
+![logo](https://github.com/user-attachments/assets/6bab91dc-d3dd-42a0-a76d-eac194e2d862)
 
 
 ![lobby hijab](https://github.com/user-attachments/assets/c7b5c3c3-a4da-4ce3-8ec0-6af0b30718ed)
