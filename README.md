@@ -117,80 +117,116 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 
 # Planning: 
 
-### Séance 1 :
-•	Rédaction du README.md  
-•	Distribution des tâches  
-•	Brainstorming des idées principales du jeu  
-
-### Séance 2 :
-•	Création du cahier des charges  
-•	Recherche d'images pour illustrer le jeu  
-•	Création des images la page d'accueil du jeu  
-•	Recherche de musiques et complétion du README  
-
-### Séance 3 :
-Programmation de l'écran titre avec les options de base : Start Game, Settings, Quitter ( Louis Fynn )   
-Travail sur les premiers éléments graphiques pour l'écran titre (design, animations de base ( Jakob Hugo )  
-Préparation de la première musique (écran titre) --> Hugo  
-  
-### Séance 4 :
-Développer le lobby principal du jeu, interface permettant de choisir parmi les mini-jeux ( Louis Jakob )   
-Programmation des touches de navigation entre les jeux ( Fynn Hugo )  
-Développement de la musique du lobby et des premiers effets sonores pour l'interface --> Hugo  
-
-### Séance 5 :
-•2 personnes commencent à travailler sur la Roulette  
-•2 autres personnes commencent à travailler sur le Blackjack  
-
-Tahces spécifiques:  
-Fynn et Jakob : Logiciel de la roulette, calculs de paris et gains, interface du jeu  
-Hugo et Louis : Interface du Blackjack, programmation des cartes et règles du jeu  
-
-### Séance 6 :
-Finaliser la logique des jeux de la roulette et du blackjack  
-Tester les mécaniques de jeu : paris, gains et perte de crédits  
-Jakob Fynn : Finalisation de la logique de paris, gestion des crédits  
-Hugo : Test des cartes de Blackjack, gestion combinaisons gagnantes  
-Lipuma Louis : Finalisation des visuels des cartes et de la table du blackjack  
-
-### Séance 7 :
-Développement des mini-jeux Machine à Sous et Dés.  
-( Jakob Hugo ) Machine à sous : Créer la logique des rouleaux et des symboles  
-( Fynn Louis ) Dés : Programmer le lancer de dés et calcul des résultats  
-
-### Séance 8 :
-Finaliser les mini-jeux (Roulette, Blackjack, Machine à sous et Dés)  
-Ajouter des animations finales et tester la logique complète des jeux  
-
-### Séance 9 :
-(Jakob) Développement du tutoriel du jeu expliquant les règles de chaque mini-jeu  
-(Hugo Fynn) Interaction avec le Bartender   
-(Louis) Tests des mini jeux  
+##Chefs de projet:
+• **Hugo**: Dés
+• **Louis** : BalckjaCK
+• **Fynn** : Slot
+• **Jakob** : Roulette
 
 
-###  Séance 10 :
-(Hugo et Louis) Développement du menu de settings (volume de la musique, effets sonores)  
-(Fynn et JAkob) Ajouter une option des paramètres de jeu  
+### **Séance 1 :**
+• Rédaction du README.md  
+• Distribution des tâches  
+• Brainstorming des idées principales du jeu  
 
-### Séance 11 :
-Hugo et Louis : Création des premiers éléments du shop (cosmétiques simples pour le lobby)  
-Jakob et Fynn : Essayent l'ajout d’une option pour sauvegarder et charger les crédits des joueurs  
+### **Séance 2 :**
+• **Jakob** : Création du cahier des charges  
+• **Fynn** : Recherche d'images pour illustrer le jeu  
+• **Louis** : Création des images de la page d'accueil du jeu  
+• **Hugo** : Recherche de musiques et complétion du README  
 
-### Séance 12 : 
-Hugo et Jakob : Finalisation de la musique et des effets sonores des mini-jeux  
-Louis et Fynn : Design avancé du shop (ajout des effets visuels et interface utilisateur)  
+### **Séance 3 :**
+• **Hugo** : Programmation de l'écran titre avec les options de base : Start Game, Settings, Quitter  
+• **Louis Fynnn** : Travail sur les premiers éléments graphiques pour l'écran titre (design, animations de base)  
+• **Jakob** : Création du planning  
 
-### Séance 13 :
-Tous les membres : Test complet de tous les mini-jeux (recherche de bugs et correction)  
-Finalisation des mécaniques de probalitie  
+### **Séance 4 :**
+• **Louis Jakob** : Développer le lobby principal du jeu, interface permettant de choisir parmi les mini-jeux   
+• **Tous** : Programmation des touches de navigation entre les jeux 
 
-### Séance 14 :
-Hugo et Fynn : Optimisation du tutoriel (ajout de sections interactives pour expliquer les règles)  
-Louis et Jakob : Finalisation des animations du jeu (transitions et effets spéciaux)  
 
-### Séance 15 :
-Assemblage final du projet  
-Préparation de la diapo pour la presentation  
+### **Tâches pendant les vacances :**
+
+- **Louis Fynn** : Finalisation des concepts de l'interface du jeu (backgrounds, éléments visuels secondaires).  
+
+**Chaque personne va créer les images nécessaires pour son jeu (chef de projet) et réflechir a la logique de son jeu.
+
+### **Séance 5 :**
+• **Fynn Jakob** : Commenceront à travailler sur la Slots
+• **Hugo Louis** : Commenceront à travailler sur le Dés
+
+**Tâches spécifiques :**  
+- **fYNN jAKOB** : Machine à sous : Créer la logique des rouleaux et des symboles  
+- **Hugo Louis** : Dés : Programmer le lancer de dés et calcul des résultats   
+
+### **Séance 6 :**
+• **Jakob Fynn** : Finaliser la logique des jeux de la roulette et du blackjack  
+• **Hugo** : Tester les mécaniques de jeu : paris, gains et perte de crédits  
+**Tâches spécifiques :**  
+- **Jakob Fynn** : Finalisation de la logique de paris, gestion des crédits  
+- **Hugo** : Test des cartes de Blackjack, gestion des combinaisons gagnantes  
+- **Louis** : Finalisation des visuels des cartes et de la table du blackjack  
+
+### **Séance 7 :**
+• **Jakob Hugo** : Développement des mini-jeux Roullette
+• **Fynn Louis** : Blackjack (plus dur que ceux d'avant dcp plus de séances nécaissaires) 
+**Tâches spécifiques :**  
+- **Jakob Hugo** : Logiciel de la roulette, interface du jeu  
+- **Fynn Louis** : Interface du Blackjack, programmation des cartes et règles du jeu  
+
+
+### **Séance 8 :**
+- **Jakob Hugo** :  calculs de paris et gains de la roulette
+- **Fynn Louis** : calculs de paris et gains du blackjack
+
+**On pourra s'aider entre les 2 groupes car les tahces sojnt similaires**
+
+### **Séance 9 :**
+• **Tous** : Finaliser les mini-jeux (Roulette, Blackjack, Machine à sous et Dés)  
+• **Tous** : Ajouter des animations finales et tester la logique complète des jeux  
+
+
+### **VACANCES D'HIVER (TRAVAIL) :**
+
+
+- **Hugo** : Finalisation de la bande-son : Révision des musiques et des effets pour l'harmonie générale du jeu.  
+- **Fynn Jakob** : Tests de compatibilité : Vérification de la fluidité du jeu sur différents appareils
+
+• **Chefs de projets** : Développement du tutoriel du jeu expliquant les règles de chaque mini-jeu et expliquant le systeme de gain pour leurs jeu (sur un petit "i" a cote du jeu) 
+• **Louis** : Interaction avec le Bartender  
+
+
+### **Séance 10 :**
+• **Hugo Louis** : Développement du menu des paramètres (volume de la musique, effets sonores)  
+• **Fynn Jakob** : Ajouter une option des paramètres de jeu  
+
+### **Séance 11 :**
+• **Hugo Louis** : Création des premiers éléments du shop (cosmétiques simples pour le lobby)  
+• **Jakob Fynn** : Essayer l'ajout d’une option pour sauvegarder et charger les crédits des joueurs  
+
+### **Séance 12 :**
+• **Hugo Jakob** : Finalisation de la musique et des effets sonores des mini-jeux  
+• **Louis Fynn** : Design avancé du shop (ajout des effets visuels et interface utilisateur)  
+
+### **Séance 13 :**
+• **Tous** : Test complet de tous les mini-jeux (recherche de bugs et correction)  
+• **Tous** : Finalisation des mécaniques de probabilité  
+
+### **Séance 14 :**
+• **Hugo Fynn** : Optimisation du tutoriel (ajout de sections interactives pour expliquer les règles)  
+• **Louis Jakob** : Finalisation des animations du jeu (transitions et effets spéciaux)  
+
+### **Séance 15 :**
+• **Tous** : Assemblage final du projet  
+
+### **VACANCES DE PÂQUES (TRAVAIL) :**
+
+- **Louis Hugo** : Création d'une présentation visuelle attrayante pour la démo du jeu
+- **Louis Fynn** : Mise à jour esthétique non nécessaire pour la fonctionnalité, mais pour améliorer la présentation (polices, couleurs, transitions supplémentaires)
+
+- **Tous** : Préparation des éléments à partager (captures d’écran, vidéos, etc.) --> chaque chef de projet va présenter son jeu et ensemble on explique le reste (lobby, bartender)
+
+
 
 # Premières images réels du jeu (faites par nous meme)
 ![logo](https://github.com/user-attachments/assets/6bab91dc-d3dd-42a0-a76d-eac194e2d862)
