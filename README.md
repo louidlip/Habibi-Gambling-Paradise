@@ -136,9 +136,8 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 • **Hugo** : Recherche de musiques et complétion du README  
 
 ### **Séance 3 :**
-• **Hugo** : Programmation de l'écran titre avec les options de base : Start Game, Settings, Quitter  
 • **Louis Fynnn** : Travail sur les premiers éléments graphiques pour l'écran titre (design, animations de base)  
-• **Jakob** : Création du planning  
+• **Jakob Hugo** : Création du planning  
 
 ### **Séance 4 :**
 • **Louis Jakob** : Développer le lobby principal du jeu, interface permettant de choisir parmi les mini-jeux   
