@@ -117,11 +117,11 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 
 # Planning: 
 
-##Chefs de projet:
-• **Hugo**: Dés
-• **Louis** : BalckjaCK
-• **Fynn** : Slot
-• **Jakob** : Roulette
+## Chefs de projet:
+• **Hugo**: Dés    
+• **Louis** : BalckjaCK     
+• **Fynn** : Slot     
+• **Jakob** : Roulette     
 
 
 ### **Séance 1 :**
