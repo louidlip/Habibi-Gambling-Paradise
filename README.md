@@ -151,20 +151,18 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 **Chaque personne va créer les images nécessaires pour son jeu (chef de projet) et réflechir a la logique de son jeu.
 
 ### **Séance 5 :**
-• **Fynn Jakob** : Commenceront à travailler sur la Slots
-• **Hugo Louis** : Commenceront à travailler sur le Dés
+• **Fynn Jakob** : Commenceront à travailler sur la Slots     
+• **Hugo Louis** : Commenceront à travailler sur le Dés     
 
 **Tâches spécifiques :**  
 - **fYNN jAKOB** : Machine à sous : Créer la logique des rouleaux et des symboles  
 - **Hugo Louis** : Dés : Programmer le lancer de dés et calcul des résultats   
 
 ### **Séance 6 :**
-• **Jakob Fynn** : Finaliser la logique des jeux de la roulette et du blackjack  
-• **Hugo** : Tester les mécaniques de jeu : paris, gains et perte de crédits  
+• **Jakob Fynn** : Finaliser la logique des jeux des slots
+• **Hugo Louis** : Tester les mécaniques de jeu : paris, gains et perte de crédits  
 **Tâches spécifiques :**  
-- **Jakob Fynn** : Finalisation de la logique de paris, gestion des crédits  
-- **Hugo** : Test des cartes de Blackjack, gestion des combinaisons gagnantes  
-- **Louis** : Finalisation des visuels des cartes et de la table du blackjack  
+- **Tous** : Finalisation de la logique de paris, gestion des crédits  
 
 ### **Séance 7 :**
 • **Jakob Hugo** : Développement des mini-jeux Roullette
@@ -178,11 +176,11 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 - **Jakob Hugo** :  calculs de paris et gains de la roulette
 - **Fynn Louis** : calculs de paris et gains du blackjack
 
-**On pourra s'aider entre les 2 groupes car les tahces sojnt similaires**
+**On pourra s'aider entre les 2 groupes car les taches sont similaires**
 
 ### **Séance 9 :**
 • **Tous** : Finaliser les mini-jeux (Roulette, Blackjack, Machine à sous et Dés)  
-• **Tous** : Ajouter des animations finales et tester la logique complète des jeux  
+• **Tous** : Ajouter des animations finales et tester la logique complète des jeux  (si il nous reste le temps)
 
 
 ### **VACANCES D'HIVER (TRAVAIL) :**
@@ -220,7 +218,7 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 
 ### **VACANCES DE PÂQUES (TRAVAIL) :**
 
-- **Louis Hugo** : Création d'une présentation visuelle attrayante pour la démo du jeu
+- **Jakob Hugo** : Création d'une présentation visuelle attrayante pour la démo du jeu
 - **Louis Fynn** : Mise à jour esthétique non nécessaire pour la fonctionnalité, mais pour améliorer la présentation (polices, couleurs, transitions supplémentaires)
 
 - **Tous** : Préparation des éléments à partager (captures d’écran, vidéos, etc.) --> chaque chef de projet va présenter son jeu et ensemble on explique le reste (lobby, bartender)
