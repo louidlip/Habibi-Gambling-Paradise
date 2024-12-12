@@ -197,3 +197,5 @@ Préparation de la diapo pour la presentation
 
 
 ![lobby hijab](https://github.com/user-attachments/assets/c7b5c3c3-a4da-4ce3-8ec0-6af0b30718ed)
+
+![image](https://github.com/user-attachments/assets/335279cd-68bf-4eab-9200-55328e8a2393)
