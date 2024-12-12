@@ -148,7 +148,7 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 
 - **Louis Fynn** : Finalisation des concepts de l'interface du jeu (backgrounds, éléments visuels secondaires).  
 
-**Chaque personne va créer les images nécessaires pour son jeu (chef de projet) et réflechir a la logique de son jeu.
+**Chaque personne va créer les images nécessaires pour son jeu (chef de projet) et réflechir a la logique de son jeu.**
 
 ### **Séance 5 :**
 • **Fynn Jakob** : Commenceront à travailler sur la Slots     
@@ -202,8 +202,8 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 • **Jakob Fynn** : Essayer l'ajout d’une option pour sauvegarder et charger les crédits des joueurs  
 
 ### **Séance 12 :**
-• **Hugo Jakob** : Finalisation de la musique et des effets sonores des mini-jeux  
-• **Louis Fynn** : Design avancé du shop (ajout des effets visuels et interface utilisateur)  
+• **Louis Jakob** : Finalisation de la musique et des effets sonores des mini-jeux  
+• **Hugo Fynn** : Design avancé du shop (ajout des effets visuels et interface utilisateur)  
 
 ### **Séance 13 :**
 • **Tous** : Test complet de tous les mini-jeux (recherche de bugs et correction)  
