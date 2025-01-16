@@ -7,10 +7,25 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Habibi")
 clock = pygame.time.Clock()
 background = pygame.transform.scale(pygame.image.load("assets/sol.png"),(screen_width,screen_height))
+font = pygame.font.Font("font/Daydream.ttf",19)
+roll_message = font.render("Voulez vous jouer au jeu de dé ?", True, (255,255,255))
 x = screen_width*0.5
 y = screen_height*0.5
+dice_machine_x = 50
+dice_machine_y = 50
 Player_speed = 5
 running = True
+
+class Dice_machine(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.transform.scale(pygame.image.load("assets/slot machine.png"),(90,140))
+        self.pos = pygame.math.Vector2(dice_machine_x,dice_machine_y)
+    def collision(self,player):
+        if player.colliderect(self):
+            screen.blit(roll_message,(15,300))
+
+
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -64,6 +79,7 @@ class Player(pygame.sprite.Sprite):
 
 
 player = Player()
+dice_machine = Dice_machine()
 while running:
     keys = pygame.key.get_pressed
     
@@ -72,6 +88,7 @@ while running:
             running = False
 
     screen.blit(background,(0,0))
+    screen.blit(dice_machine.image, dice_machine.pos)
     screen.blit(player.image, player.pos)
     player.update()
         
