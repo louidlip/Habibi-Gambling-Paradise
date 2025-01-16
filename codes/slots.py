@@ -10,16 +10,15 @@ SCREEN_HEIGHT = 600
 
 # Charger les ressources
 BACKGROUND_IMAGE = "Habibi-Gambling-Paradise/assets/slut machine.png"
-ASSETS_PATH = "Habibi-Gambling-Paradise/assets/"
 SYMBOLS = {
-    "lanterne": (f"{ASSETS_PATH}lanterne.png", 1000),
-    "arabicLight": (f"{ASSETS_PATH}arabicLight.jpg", 500),
-    "kebab": (f"{ASSETS_PATH}kebab.png", 400),
-    "kim": (f"{ASSETS_PATH}kim.png", 300),
-    "bonbons": (f"{ASSETS_PATH}bonbons.png", 200),
-    "pyramid": (f"{ASSETS_PATH}pyramid.jpg", 100),
-    "pixel9": (f"{ASSETS_PATH}pixel-number-9.png", 50),
-    "pixel6": (f"{ASSETS_PATH}pixel-number-6.png", 10),
+    "lanterne": ("Habibi-Gambling-Paradise/assets/lanterne.png", 1000),
+    "arabicLight": ("Habibi-Gambling-Paradise/assets/arabicLight.jpg", 500),
+    "kebab": ("Habibi-Gambling-Paradise/assets/kebab.png", 400),
+    "kim": ("Habibi-Gambling-Paradise/assets/kim.png", 300),
+    "bonbons": ("Habibi-Gambling-Paradise/assets/bonbons.png", 200),
+    "pyramid": ("Habibi-Gambling-Paradise/assets/pyramid.jpg", 100),
+    "pixel9": ("Habibi-Gambling-Paradise/assets/pixel-number-9.png", 50),
+    "pixel6": ("Habibi-Gambling-Paradise/assets/pixel-number-6.png", 10),
 }
 
 # Liste des symboles pour la sélection aléatoire
