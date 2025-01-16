@@ -11,8 +11,8 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Habibi")
 
 # Chargement des images
-background_image = pygame.image.load("Ecran_titre/Ecran_titre.png")
-Logo = pygame.image.load("Ecran_titre/Logo.png")
+background_image = pygame.image.load("assets/Ecran_titre.png")
+Logo = pygame.image.load("assets/Logo.png")
 pygame.display.set_icon(Logo)
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
