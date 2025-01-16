@@ -1,4 +1,4 @@
-import pygame
+simport pygame
 pygame.init()
 screen_width = 800
 screen_height = 600
@@ -14,7 +14,7 @@ running = True
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("sprites/sprite perso 1.png")
+        self.image = pygame.image.load("assets/sprite perso 1.png")
         self.pos = pygame.math.Vector2(x,y)
         self.speed = Player_speed
 
