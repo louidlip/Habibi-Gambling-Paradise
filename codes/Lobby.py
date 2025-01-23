@@ -1,4 +1,4 @@
-import pygame 
+import pygame
 import sys
 import json
 import os
@@ -41,10 +41,14 @@ class Dice_machine(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load("assets/slot machine.png"), (90, 140))
         self.pos = pygame.math.Vector2(dice_machine_x, dice_machine_y)
+        self.rect = self.image.get_rect(center=(dice_machine_x, dice_machine_y))
 
     def collision(self, player):
-        if player.colliderect(self):
-            screen.blit(roll_message, (screen_width * 0.1, screen_height * 0.5))
+        if self.rect.colliderect(player):
+            screen.blit(roll_message,(x,y))
+    
+    def update(self, player):
+        self.collision(player)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -105,35 +109,27 @@ def display_end_screen():
 player = Player()
 dice_machine = Dice_machine()
 
-# Variables pour l'écran principal
 in_game = True
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-        # Vérification du clic sur le bouton "Exit" en haut à droite
+        
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = event.pos
-            # Vérifie si le clic est dans la zone du bouton Exit
             if screen_width - 60 <= mouse_x <= screen_width - 10 and 10 <= mouse_y <= 50:
                 in_game = False
-
     if in_game:
-        # Affichage du jeu
         screen.blit(background, (0, 0))
         screen.blit(dice_machine.image, dice_machine.pos)
         screen.blit(player.image, player.pos)
         player.update()
-
-        # Dessiner le bouton Exit (rectangle en haut à droite)
-        pygame.draw.rect(screen, (255, 0, 0), (screen_width - 100, 10, 80, 40))  # Bouton rouge
+        dice_machine.update(player)
+        pygame.draw.rect(screen, (255, 0, 0), (screen_width - 100, 10, 80, 40))  
         exit_text = font.render("Exit", True, (255, 255, 255))
-        screen.blit(exit_text, (screen_width - 100, 15))  # Texte blanc
-
+        screen.blit(exit_text, (screen_width - 100, 15)*
     else:
-        # Affichage de l'écran de fin
         display_end_screen()
 
     pygame.display.flip()
@@ -141,4 +137,3 @@ while running:
 
 pygame.quit()
 sys.exit()
-
