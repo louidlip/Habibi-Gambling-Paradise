@@ -18,8 +18,8 @@ game_over_image = pygame.image.load("ecran-fin.png")
 game_over_image = pygame.transform.scale(game_over_image, (screen_width, screen_height))
 
 def game_over_screen():
-    screen.blit(game_over_image, (0, 0))  # Afficher l'image de fin à l'écran
-    pygame.display.flip()  # Mettre à jour l'affichage
+    screen.blit(game_over_image, (0, 0))
+    pygame.display.flip()
 
     waiting_for_input = True
     while waiting_for_input:
