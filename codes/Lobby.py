@@ -1,4 +1,4 @@
-import pygame
+import pygame 
 import sys
 import json
 import os
@@ -96,21 +96,49 @@ class Player(pygame.sprite.Sprite):
         self.user_input()
         self.move()
 
+def display_end_screen():
+    end_message = font.render("Merci d'avoir joue !", True, (255, 255, 255))
+    screen.fill((0, 0, 0))  # Écran noir
+    screen.blit(end_message, (screen_width * 0.4, screen_height * 0.5))
+    pygame.display.flip()
+
 player = Player()
 dice_machine = Dice_machine()
+
+# Variables pour l'écran principal
+in_game = True
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    screen.blit(background, (0, 0))
-    screen.blit(dice_machine.image, dice_machine.pos)
-    screen.blit(player.image, player.pos)
-    player.update()
+        # Vérification du clic sur le bouton "Exit" en haut à droite
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = event.pos
+            # Vérifie si le clic est dans la zone du bouton Exit
+            if screen_width - 60 <= mouse_x <= screen_width - 10 and 10 <= mouse_y <= 50:
+                in_game = False
+
+    if in_game:
+        # Affichage du jeu
+        screen.blit(background, (0, 0))
+        screen.blit(dice_machine.image, dice_machine.pos)
+        screen.blit(player.image, player.pos)
+        player.update()
+
+        # Dessiner le bouton Exit (rectangle en haut à droite)
+        pygame.draw.rect(screen, (255, 0, 0), (screen_width - 100, 10, 80, 40))  # Bouton rouge
+        exit_text = font.render("Exit", True, (255, 255, 255))
+        screen.blit(exit_text, (screen_width - 100, 15))  # Texte blanc
+
+    else:
+        # Affichage de l'écran de fin
+        display_end_screen()
 
     pygame.display.flip()
     clock.tick(60)
 
 pygame.quit()
 sys.exit()
+
