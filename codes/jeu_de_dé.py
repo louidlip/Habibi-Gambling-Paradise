@@ -13,10 +13,10 @@ pygame.display.set_caption("Jeu de Dé - Habibi")
 clock = pygame.time.Clock()
 
 # Chargement des ressources
-Logo = pygame.image.load("assets/Logo.png")
+Logo = pygame.image.load("Habibi-Gambling-Paradise-main/assets/Logo.png")
 pygame.display.set_icon(Logo)
-font = pygame.font.Font("font/Daydream.ttf", 32)
-small_font = pygame.font.Font("font/Daydream.ttf", 19)
+font = pygame.font.Font("Habibi-Gambling-Paradise-main/font/Daydream.ttf", 32)
+small_font = pygame.font.Font("Habibi-Gambling-Paradise-main/font/Daydream.ttf", 19)
 
 roll_message = small_font.render("Appuyer sur ESPACE pour lancer le de", True, (255, 255, 255))
 win_message = font.render("Vous avez gagne !", True, (0, 255, 0))
@@ -24,8 +24,14 @@ lose_message = font.render("Vous avez perdu !", True, (255, 0, 0))
 
 # Chargement des images de dés
 dice_images = [
-    pygame.image.load(f"assets/dice/{i}.png") for i in range(1, 7)
+    pygame.image.load(f"Habibi-Gambling-Paradise-main/assets/dice/{i}.png") for i in range(1, 7)
 ]
+
+# Charger l'image de fond
+background_image = pygame.image.load("Habibi-Gambling-Paradise-main/assets/arriere-plan-table-poker-design-plat_23-2151047002.jpg") 
+
+# Redimensionner l'image de fond pour qu'elle prenne toute la fenêtre
+background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
 # Variables du jeu
 dice_result = None  # Résultat du dé
@@ -52,7 +58,7 @@ def dice_animation():
     for i in range(animation_frames):
         # Change l'image du dé aléatoirement
         current_image = random.choice(dice_images)
-        screen.fill((0, 0, 0))
+        screen.blit(background_image, (0, 0))  # Affiche le fond redimensionné à chaque frame
         screen.blit(roll_message, (90, 300))
         screen.blit(current_image, (screen_width // 2 - current_image.get_width() // 2, 150))
         pygame.display.flip()
@@ -72,7 +78,7 @@ while True:
                 game_outcome = check_game_outcome(dice_result)
 
     # Dessin à l'écran
-    screen.fill((0, 0, 0))  # Remplit l'écran en noir
+    screen.blit(background_image, (0, 0))  # Remplir l'écran avec l'image de fond redimensionnée
     screen.blit(roll_message, (90, 300))  # Affiche le message
 
     if dice_result is not None and not rolling:
