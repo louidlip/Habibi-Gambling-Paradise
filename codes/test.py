@@ -25,9 +25,9 @@ screen_width, screen_height = settings["resolution"]
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 pygame.display.set_caption("Habibi")
 
-background_image = pygame.image.load("assets/Ecran_titre.png")
+background_image = pygame.image.load("Habibi-Gambling-Paradise-main/assets/Ecran_titre.png")
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
-Logo = pygame.image.load("assets/Logo.png")
+Logo = pygame.image.load("Habibi-Gambling-Paradise-main/assets/Logo.png")
 pygame.display.set_icon(Logo)
 
 WHITE = (255, 255, 255)
@@ -47,7 +47,7 @@ button_play_text = font.render("Jouer", True, WHITE)
 button_settings_text = font.render("Paramètres", True, WHITE)
 
 pygame.mixer.init()
-pygame.mixer.music.load("assets/background.mp3")
+pygame.mixer.music.load("Habibi-Gambling-Paradise-main/assets/background.mp3")
 pygame.mixer.music.set_volume(settings["volume"])
 pygame.mixer.music.play(-1)
 
@@ -126,7 +126,7 @@ while running:
             if button_x <= mouse_x <= button_x + button_width and button_y_play <= mouse_y <= button_y_play + button_height:
                 running = False
                 save_settings({"volume": current_volume, "resolution": (screen_width, screen_height)})
-                subprocess.Popen(["python", "codes/Lobby.py"])
+                subprocess.Popen(["python", "Habibi-Gambling-Paradise-main/codes/Lobby.py"])
             elif button_x <= mouse_x <= button_x + button_width and button_y_settings <= mouse_y <= button_y_settings + button_height:
                 show_settings()
 
