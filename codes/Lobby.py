@@ -128,7 +128,7 @@ while running:
         dice_machine.update(player)
         pygame.draw.rect(screen, (255, 0, 0), (screen_width - 100, 10, 80, 40))  
         exit_text = font.render("Exit", True, (255, 255, 255))
-        screen.blit(exit_text, (screen_width - 100, 15)*
+        screen.blit(exit_text, (screen_width - 100, 15))
     else:
         display_end_screen()
 
