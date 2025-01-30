@@ -6,8 +6,8 @@ import os
 pygame.init()
 
 # Dimensions de l'écran
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 700
 
 # Chemin de base pour les ressources
 BASE_PATH = r"\\0641-SRV-FILES\perso\ELEVES_LYC\1ERE06\KIMPFLERJ\Downloads\Habibi-Gambling-Paradise-main"
