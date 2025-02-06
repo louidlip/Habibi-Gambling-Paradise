@@ -17,8 +17,8 @@ roll_message = font.render("Voulez-vous jouer au jeu de dé ?", True, (255, 255,
 
 x = screen_width * 0.5
 y = screen_height * 0.5
-dice_machine_x = 50
-dice_machine_y = 50
+dice_machine_x = 390
+dice_machine_y = 30
 Player_speed = 5
 running = True
 
@@ -30,7 +30,7 @@ class Dice_machine(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(dice_machine_x, dice_machine_y))
 
     def collision(self, player):
-        if self.rect.colliderect(player):
+        if self.rect.colliderect(player.rect):
             screen.blit(roll_message,(x,y))
     
     def update(self, player):
@@ -85,6 +85,7 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         self.user_input()
         self.move()
+        self.rect.topleft = (self.pos.x,self.pos.y)
 
 def display_end_screen():
     end_message = font.render("Merci d'avoir joue !", True, (255, 255, 255))
