@@ -1,26 +1,12 @@
 import pygame
 import sys
-import json
-import os
 
 pygame.init()
 
-def load_settings():
-    default_settings = {"volume": 0.5, "resolution": (800, 600)}
-    if os.path.exists("settings.json"):
-        with open("settings.json", "r") as f:
-            return json.load(f)
-    else:
-        save_settings(default_settings)
-        return default_settings
+# Définir la résolution par défaut
+screen_width, screen_height = 800, 600
 
-def save_settings(settings):
-    with open("settings.json", "w") as f:
-        json.dump(settings, f, indent=4)
-
-settings = load_settings()
-screen_width, screen_height = settings["resolution"]
-
+# Initialisation de la fenêtre Pygame avec la résolution fixe
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 pygame.display.set_caption("Habibi")
 clock = pygame.time.Clock()
