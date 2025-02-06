@@ -72,7 +72,7 @@ Un tutoriel qui donne des explications sur le jeux demander . Ce tutoriel sera d
 ### 4. Tâches :
 
 •	Garotta Hugo : Développement du code pour la gestion de la musique et des sons, ainsi que le développement d'éléments liés à l'interface.  
-•	Kimpfler Jakob : Création de l'histoire du jeu et du code de base pour les différentes mécaniques de jeux (roulette, blackjack, etc.).  
+•	Kimpfler Jakob : Création de l'histoire du jeu et du code de base pour les différentes mécaniques de jeux (roulette,plinko etc.).  
 •	Kirsten Fynn : Co-auteur de l’histoire, co-designer des éléments visuels et programmation des interactions dans les jeux. Le Joker.  
 •	Lipuma Louis : Design des éléments visuels et création des différentes interfaces et animations des jeux.  
 
@@ -119,7 +119,7 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 
 ## Chefs de projet:
 • **Hugo**: Dés    
-• **Louis** : BalckjaCK     
+• **Louis** : plinko     
 • **Fynn** : Slot     
 • **Jakob** : Roulette     
 
@@ -166,7 +166,7 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 
 ### **Séance 7 :**
 • **Jakob Hugo** : Développement des mini-jeux Roullette
-• **Fynn Louis** : Blackjack (plus dur que ceux d'avant dcp plus de séances nécaissaires) 
+• **Fynn Louis** : plinko (plus dur que ceux d'avant dcp plus de séances nécaissaires) 
 **Tâches spécifiques :**  
 - **Jakob Hugo** : Logiciel de la roulette, interface du jeu  
 - **Fynn Louis** : Interface du Blackjack, programmation des cartes et règles du jeu  
@@ -174,12 +174,12 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 
 ### **Séance 8 :**
 - **Jakob Hugo** :  calculs de paris et gains de la roulette
-- **Fynn Louis** : calculs de paris et gains du blackjack
+- **Fynn Louis** : calculs de paris et gains du plinko
 
 **On pourra s'aider entre les 2 groupes car les taches sont similaires**
 
 ### **Séance 9 :**
-• **Tous** : Finaliser les mini-jeux (Roulette, Blackjack, Machine à sous et Dés)  
+• **Tous** : Finaliser les mini-jeux (Roulette, plinkko, Machine à sous et Dés)  
 • **Tous** : Ajouter des animations finales et tester la logique complète des jeux  (si il nous reste le temps)
 
 
@@ -219,7 +219,7 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 ### **VACANCES DE PÂQUES (TRAVAIL) :**
 
 - **Jakob Hugo** : Création d'une présentation visuelle attrayante pour la démo du jeu
-- **Louis Fynn** : Mise à jour esthétique non nécessaire pour la fonctionnalité, mais pour améliorer la présentation (polices, couleurs, transitions supplémentaires)
+- **Louis Fynn** : Finalisation du plinko et du jeu en général.
 
 - **Tous** : Préparation des éléments à partager (captures d’écran, vidéos, etc.) --> chaque chef de projet va présenter son jeu et ensemble on explique le reste (lobby, bartender)
 
