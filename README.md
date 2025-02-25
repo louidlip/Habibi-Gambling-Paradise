@@ -9,6 +9,18 @@ README.md
 •	Kirsten Fynn : Code, co-auteur de l'histoire, et co-designer  
 •	Lipuma Louis : Code et designer  
 
+## **Mise au point:**
+
+Ecran titre terminée à 99%
+Le système de déplacement a été update
+La base du lobby est terminée (plus que quelque changements restants)
+La base de laplupart des jeux est présente sauf pour le plinko qui va etre fait en suivant un tutoriel
+L'écran de fin est existant mais a besoin d'être update
+Une musique est déjà présente pourl'écran titre et le reste des musiques vont être faites sous peu
+Les sprites restent à faire mais ne sont pas notre priorité
+Nous devons trouver un systèmepour rendre le jeu de dé plus intéressant
+Un système de monnaie doit être mis en place
+En conclusion, l'ensemble de la base du jeu est présente. Maintenant, tout ce qu'il reste à faire c'est rendre fonctionnel et perfectionner
 ### **Projet : Jeu de Casino avec différentes activités**
 ### 1. Objectif du projet :
 Développer un jeu de casino avec plusieurs mini-jeux populaires :  
