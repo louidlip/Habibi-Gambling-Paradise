@@ -77,6 +77,7 @@ while True:
                 dice_animation()
                 game_outcome = check_game_outcome(dice_result)
 
+    
     # Dessin à l'écran
     screen.blit(background_image, (0, 0))  # Remplir l'écran avec l'image de fond redimensionnée
     screen.blit(roll_message, (90, 300))  # Affiche le message
