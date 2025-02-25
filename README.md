@@ -14,7 +14,7 @@ README.md
 Ecran titre terminée à 99%
 Le système de déplacement a été update
 La base du lobby est terminée (plus que quelque changements restants)
-La base de laplupart des jeux est présente sauf pour le plinko qui va etre fait en suivant un tutoriel
+La base de laplupart des jeux est présente sauf pour le plinko qui va etre fait en suivant un tutoriel (https://www.youtube.com/watch?v=bfM0qtzR2Vc)
 L'écran de fin est existant mais a besoin d'être update
 Une musique est déjà présente pourl'écran titre et le reste des musiques vont être faites sous peu
 Les sprites restent à faire mais ne sont pas notre priorité
