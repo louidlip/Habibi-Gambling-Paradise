@@ -1,5 +1,6 @@
 import pygame
 import sys
+import subprocess
 
 pygame.init()
 
@@ -7,13 +8,16 @@ pygame.init()
 screen_width, screen_height = 800, 600
 
 # Initialisation de la fenêtre Pygame avec la résolution fixe
+Logo = pygame.image.load("assets/Logo.png")
+pygame.display.set_icon(Logo)
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 pygame.display.set_caption("Habibi")
 clock = pygame.time.Clock()
-
+ecran_noir = pygame.image.load("assets/surface noire.jpg")
+ecran_noir.set_alpha(100)
 background = pygame.transform.scale(pygame.image.load("assets/sol.png"), (screen_width, screen_height))
-font = pygame.font.Font("font/Daydream.ttf", 19)
-roll_message = font.render("Voulez-vous jouer au jeu de dé ?", True, (255, 255, 255))
+font = pygame.font.Font("font/Daydream.ttf", 18)
+roll_message = font.render("Voulez-vous jouer au jeu de de ? (appuyez sur 'E')", True, (255, 255, 255))
 
 x = screen_width * 0.5
 y = screen_height * 0.5
@@ -21,20 +25,6 @@ dice_machine_x = 390
 dice_machine_y = 30
 Player_speed = 5
 running = True
-
-class Dice_machine(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-        self.image = pygame.transform.scale(pygame.image.load("assets/slot machine.png"), (90, 140))
-        self.pos = pygame.math.Vector2(dice_machine_x, dice_machine_y)
-        self.rect = self.image.get_rect(center=(dice_machine_x, dice_machine_y))
-
-    def collision(self, player):
-        if self.rect.colliderect(player.rect):
-            screen.blit(roll_message,(x,y))
-    
-    def update(self, player):
-        self.collision(player)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -70,24 +60,46 @@ class Player(pygame.sprite.Sprite):
             if keys[pygame.K_z] or keys[pygame.K_s]:
                 self.velocity_x = 0
                 self.velocity_y = 0
-
     def move(self):
-        self.pos += pygame.math.Vector2(self.velocity_x, self.velocity_y)
-        if self.pos.x < 0:
-            self.pos.x = 0
-        if self.pos.x > screen_width - self.rect.width:
-            self.pos.x = screen_width - self.rect.width
-        if self.pos.y < 0:
-            self.pos.y = 0
-        if self.pos.y > screen_height - self.rect.height:
-            self.pos.y = screen_height - self.rect.height
+            self.pos += pygame.math.Vector2(self.velocity_x, self.velocity_y)
+            if self.pos.x < 0:
+                self.pos.x = 0
+            if self.pos.x > screen_width - self.rect.width:
+                self.pos.x = screen_width - self.rect.width
+            if self.pos.y < 0:
+               self.pos.y = 0
+            if self.pos.y > screen_height - self.rect.height:
+                self.pos.y = screen_height - self.rect.height
 
     def update(self):
         self.user_input()
         self.move()
         self.rect.topleft = (self.pos.x,self.pos.y)
 
+class Dice_machine(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.transform.scale(pygame.image.load("assets/slot machine.png"), (90, 140))
+        self.pos = pygame.math.Vector2(dice_machine_x, dice_machine_y)
+        self.rect = self.image.get_rect(center=(dice_machine_x, dice_machine_y))
 
+    def collision(self, player):
+        keys = pygame.key.get_pressed()
+        if self.rect.colliderect(player.rect):
+            screen.blit(ecran_noir,(0,0))
+            screen.blit(roll_message,(5,250))
+        if keys[pygame.K_e]:
+            running = False
+            subprocess.Popen(["python", "codes/jeu_de_dé.py"])
+    
+    def update(self, player):
+        self.collision(player)
+
+def display_end_screen():
+    end_message = font.render("Merci d'avoir joue !", True, (255, 255, 255))
+    screen.fill((0, 0, 0))  
+    screen.blit(end_message, (screen_width * 0.4, screen_height * 0.5))
+    pygame.display.flip()
 
 player = Player()
 dice_machine = Dice_machine()
@@ -120,4 +132,3 @@ while running:
 
 pygame.quit()
 sys.exit()
-
