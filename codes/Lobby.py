@@ -87,11 +87,7 @@ class Player(pygame.sprite.Sprite):
         self.move()
         self.rect.topleft = (self.pos.x,self.pos.y)
 
-def display_end_screen():
-    end_message = font.render("Merci d'avoir joue !", True, (255, 255, 255))
-    screen.fill((0, 0, 0))  # Écran noir
-    screen.blit(end_message, (screen_width * 0.4, screen_height * 0.5))
-    pygame.display.flip()
+
 
 player = Player()
 dice_machine = Dice_machine()
@@ -124,3 +120,4 @@ while running:
 
 pygame.quit()
 sys.exit()
+
