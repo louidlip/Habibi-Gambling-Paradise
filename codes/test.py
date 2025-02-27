@@ -28,9 +28,11 @@ button_height = 50
 button_x = (screen_width - button_width) // 2
 button_y_play = screen_height // 2
 button_y_settings = button_y_play + button_height + 20
+button_y_quit = button_y_settings + button_height + 20  # Position du bouton Quitter
 
 button_play_text = font.render("Jouer", True, WHITE)
 button_settings_text = font.render("Paramètres", True, WHITE)
+button_quit_text = font.render("Quitter", True, WHITE)  # Texte du bouton Quitter
 
 pygame.mixer.init()
 pygame.mixer.music.load("assets/background.mp3")
@@ -98,11 +100,15 @@ while running:
                 subprocess.Popen(["python", "codes/Lobby.py"])
             elif button_x <= mouse_x <= button_x + button_width and button_y_settings <= mouse_y <= button_y_settings + button_height:
                 show_settings()
+            elif button_x <= mouse_x <= button_x + button_width and button_y_quit <= mouse_y <= button_y_quit + button_height:
+                pygame.quit()
+                sys.exit()  # Quitter le jeu
 
     screen.fill(BLACK)
     screen.blit(background_image, (0, 0))
     draw_button(button_x, button_y_play, button_width, button_height, button_play_text, screen)
     draw_button(button_x, button_y_settings, button_width, button_height, button_settings_text, screen)
+    draw_button(button_x, button_y_quit, button_width, button_height, button_quit_text, screen)  # Afficher le bouton Quitter
     pygame.display.flip()
     pygame.time.Clock().tick(60)
 
