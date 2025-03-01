@@ -5,93 +5,83 @@ import time
 
 pygame.init()
 
-# Initialisation de la fenêtre
-screen_width = 1000
-screen_height = 700
+screen_width = 800
+screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Jeu de Dé - Habibi")
+pygame.display.set_caption("Jeu de Dé Amélioré")
 clock = pygame.time.Clock()
 
-# Chargement des ressources
-Logo = pygame.image.load("assets/Logo.png")
-pygame.display.set_icon(Logo)
+logo = pygame.image.load("assets/Logo.png")
+pygame.display.set_icon(logo)
 font = pygame.font.Font("font/Daydream.ttf", 32)
 small_font = pygame.font.Font("font/Daydream.ttf", 19)
 
-roll_message = small_font.render("Appuyer sur ESPACE pour lancer le de", True, (255, 255, 255))
-win_message = font.render("Vous avez gagne !", True, (0, 255, 0))
+roll_message = small_font.render("Appuyez sur ESPACE pour lancer le dé", True, (255, 255, 255))
+win_message = font.render("Vous avez gagné !", True, (0, 255, 0))
 lose_message = font.render("Vous avez perdu !", True, (255, 0, 0))
 
-# Chargement des images de dés
 dice_images = [
     pygame.image.load(f"assets/dice/{i}.png") for i in range(1, 7)
 ]
 
-# Charger l'image de fond
-background_image = pygame.image.load("assets/arriere-plan-table-poker-design-plat_23-2151047002.jpg") 
-
-# Redimensionner l'image de fond pour qu'elle prenne toute la fenêtre
+background_image = pygame.image.load("assets/arriere-plan.jpg")
 background_image = pygame.transform.scale(background_image, (screen_width, screen_height))
 
-# Variables du jeu
-dice_result = None  # Résultat du dé
-game_outcome = None  # Résultat du jeu: "win", "lose" ou None
-rolling = False  # Indique si le dé est en train de rouler
-animation_frames = 20  # Nombre de frames pour l'animation
+dice_result = None
+game_outcome = None
+rolling = False
+animation_frames = 20
+score = 0
 
-# Fonction pour lancer un dé avec probabilité ajustée
 def roll_dice():
-    weighted_roll = [1, 2, 3, 4, 5, 6, 6]  # Chances ajustées (6 a plus de chances)
+    weighted_roll = [1, 2, 3, 4, 5, 6, 6]
     return random.choice(weighted_roll)
 
-# Fonction pour vérifier les conditions de victoire ou de défaite
 def check_game_outcome(dice_result):
-    if dice_result in [5, 6]:  # Victoire si le résultat est 5 ou 6
+    global score
+    if dice_result in [5, 6]:
+        score += 10
         return "win"
-    else:  # Défaite pour les autres résultats
+    else:
+        score -= 5
         return "lose"
 
-# Fonction pour jouer l'animation du dé
 def dice_animation():
     global dice_result, rolling
     rolling = True
     for i in range(animation_frames):
-        # Change l'image du dé aléatoirement
         current_image = random.choice(dice_images)
-        screen.blit(background_image, (0, 0))  # Affiche le fond redimensionné à chaque frame
+        screen.blit(background_image, (0, 0))
         screen.blit(roll_message, (90, 300))
         screen.blit(current_image, (screen_width // 2 - current_image.get_width() // 2, 150))
         pygame.display.flip()
-        pygame.time.delay(50 + i * 10)  # Augmente progressivement le délai
+        pygame.time.delay(50 + i * 10)
     dice_result = roll_dice()
     rolling = False
 
-# Boucle principale
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE and not rolling:  # Si ESPACE est pressée et pas d'animation en cours
+            if event.key == pygame.K_SPACE and not rolling:
                 dice_animation()
                 game_outcome = check_game_outcome(dice_result)
 
-    
-    # Dessin à l'écran
-    screen.blit(background_image, (0, 0))  # Remplir l'écran avec l'image de fond redimensionnée
-    screen.blit(roll_message, (90, 300))  # Affiche le message
+    screen.blit(background_image, (0, 0))
+    screen.blit(roll_message, (90, 300))
 
     if dice_result is not None and not rolling:
-        # Affiche l'image du dé correspondant au résultat final
         dice_image = dice_images[dice_result - 1]
         screen.blit(dice_image, (screen_width // 2 - dice_image.get_width() // 2, 150))
-
-        # Affiche le résultat du jeu
         if game_outcome == "win":
             screen.blit(win_message, (screen_width // 2 - win_message.get_width() // 2, 400))
         elif game_outcome == "lose":
             screen.blit(lose_message, (screen_width // 2 - lose_message.get_width() // 2, 400))
+
+    score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+    screen.blit(score_text, (screen_width - score_text.get_width() - 20, 20))
 
     pygame.display.flip()
     clock.tick(60)
