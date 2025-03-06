@@ -21,7 +21,7 @@ roll_message = font.render("Voulez-vous jouer au jeu de de ? (appuyez sur 'E')",
 
 x = screen_width * 0.5
 y = screen_height * 0.5
-dice_machine_x = 390
+dice_machine_x = 350
 dice_machine_y = 30
 Player_speed = 5
 running = True
@@ -79,7 +79,7 @@ class Player(pygame.sprite.Sprite):
 class Dice_machine(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.transform.scale(pygame.image.load("assets/slot machine.png"), (90, 140))
+        self.image = pygame.transform.scale(pygame.image.load("assets/slot machine.png"), (140, 140))
         self.pos = pygame.math.Vector2(dice_machine_x, dice_machine_y)
         self.rect = self.image.get_rect(center=(dice_machine_x, dice_machine_y))
 
@@ -88,19 +88,27 @@ class Dice_machine(pygame.sprite.Sprite):
         if self.rect.colliderect(player.rect):
             screen.blit(ecran_noir,(0,0))
             screen.blit(roll_message,(5,250))
-        if keys[pygame.K_e]:
-            subprocess.Popen(["python", "codes/jeu_de_dé.py"])
-            pygame.quit()
-            sys.exit()
+            if keys[pygame.K_e]:
+                subprocess.Popen(["python", "codes/jeu_de_dé.py"])
+                pygame.quit()
+                sys.exit()
     
     def update(self, player):
         self.collision(player)
 
 def display_end_screen():
+    keys = pygame.key.get_pressed()
     end_message = font.render("Merci d'avoir joue !", True, (255, 255, 255))
+    end_message_2 = font.render("Appuyez sur 'ESC' pour retourner a l'Ecran titre", True, (255, 255, 255))
     screen.fill((0, 0, 0))  
-    screen.blit(end_message, (screen_width * 0.4, screen_height * 0.5))
+    screen.blit(end_message, (screen_width * 0.3, screen_height * 0.5))
+    screen.blit(end_message_2, (5, screen_height * 0.6))
     pygame.display.flip()
+    if keys[pygame.K_ESCAPE]:
+        subprocess.Popen(["python", "codes/test.py"])
+        pygame.quit()
+        sys.exit()
+
 
 player = Player()
 dice_machine = Dice_machine()
