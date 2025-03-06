@@ -89,8 +89,9 @@ class Dice_machine(pygame.sprite.Sprite):
             screen.blit(ecran_noir,(0,0))
             screen.blit(roll_message,(5,250))
         if keys[pygame.K_e]:
-            running = False
             subprocess.Popen(["python", "codes/jeu_de_dé.py"])
+            pygame.quit()
+            sys.exit()
     
     def update(self, player):
         self.collision(player)
@@ -109,7 +110,8 @@ in_game = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            pygame.quit()
+            sys.exit()
         
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = event.pos
