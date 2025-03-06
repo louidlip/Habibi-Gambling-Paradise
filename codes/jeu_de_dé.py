@@ -2,6 +2,7 @@ import pygame
 import random
 import sys
 import time
+import subprocess
 
 pygame.init()
 
@@ -15,11 +16,12 @@ logo = pygame.image.load("assets/Logo.png")
 pygame.display.set_icon(logo)
 font = pygame.font.Font("font/Daydream.ttf", 32)
 small_font = pygame.font.Font("font/Daydream.ttf", 19)
+ecran_noir = pygame.image.load("assets/surface noire.jpg")
 
 roll_message = small_font.render("Appuyez sur ESPACE pour lancer le dé", True, (255, 255, 255))
 win_message = font.render("Vous avez gagné !", True, (0, 255, 0))
 lose_message = font.render("Vous avez perdu !", True, (255, 0, 0))
-
+esc_message = small_font.render("Appuyez sur 'E' pour retourner au Lobby", True, (255, 255, 255))
 dice_images = [
     pygame.image.load(f"assets/dice/{i}.png") for i in range(1, 7)
 ]
@@ -59,6 +61,14 @@ def dice_animation():
     dice_result = roll_dice()
     rolling = False
 
+def exit_possibility():
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_e]:
+        subprocess.Popen(["python", "codes/Lobby.py"])
+        pygame.quit()
+        sys.exit()
+
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -68,10 +78,9 @@ while True:
             if event.key == pygame.K_SPACE and not rolling:
                 dice_animation()
                 game_outcome = check_game_outcome(dice_result)
-
+    exit_possibility()
     screen.blit(background_image, (0, 0))
     screen.blit(roll_message, (90, 300))
-
     if dice_result is not None and not rolling:
         dice_image = dice_images[dice_result - 1]
         screen.blit(dice_image, (screen_width // 2 - dice_image.get_width() // 2, 150))
@@ -82,6 +91,6 @@ while True:
 
     score_text = font.render(f"Score: {score}", True, (255, 255, 255))
     screen.blit(score_text, (screen_width - score_text.get_width() - 20, 20))
-
+    screen.blit(esc_message, (75, 550))
     pygame.display.flip()
     clock.tick(60)
