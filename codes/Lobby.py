@@ -18,7 +18,8 @@ ecran_noir.set_alpha(100)
 background = pygame.transform.scale(pygame.image.load("assets/sol.png"), (screen_width, screen_height))
 font = pygame.font.Font("font/Daydream.ttf", 18)
 roll_message = font.render("Voulez-vous jouer au jeu de de ? (appuyez sur 'E')", True, (255, 255, 255))
-
+roll_message2 = font.render("Voulez-vous jouer au Plinko ? (appuyez sur 'E')", True, (255, 255, 255))
+roll_message3 = font.render("Voulez-vous jouer a la machine a sous ? (appuyez sur 'E')", True, (255, 255, 255))
 x = screen_width * 0.5
 y = screen_height * 0.5
 dice_machine_x = 350
@@ -29,7 +30,7 @@ running = True
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("assets/sprite perso 1.png")
+        self.image = pygame.transform.scale(pygame.image.load("assets/Sprite arrière.png"),(150,150))
         self.rect = self.image.get_rect(center=(x, y))
         self.pos = pygame.math.Vector2(x, y)
         self.speed = Player_speed
@@ -41,21 +42,25 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_z]:
+            self.image = pygame.transform.scale(pygame.image.load("assets/Sprite arrière.png"),(150,150))
             self.velocity_y = -self.speed
             if keys[pygame.K_q] or keys[pygame.K_d]:
                 self.velocity_x = 0
                 self.velocity_y = 0
         if keys[pygame.K_q]:
+            self.image = pygame.transform.scale(pygame.image.load("assets/Sprite gauche.png"),(150,150))
             self.velocity_x = -self.speed
             if keys[pygame.K_z] or keys[pygame.K_s]:
                 self.velocity_x = 0
                 self.velocity_y = 0
         if keys[pygame.K_s]:
+            self.image = pygame.transform.scale(pygame.image.load("assets/Sprite avant.png"),(150,150))
             self.velocity_y = self.speed
             if keys[pygame.K_q] or keys[pygame.K_d]:
                 self.velocity_x = 0
                 self.velocity_y = 0
         if keys[pygame.K_d]:
+            self.image = pygame.transform.scale(pygame.image.load("assets/Sprite droite.png"),(150,150))
             self.velocity_x = self.speed
             if keys[pygame.K_z] or keys[pygame.K_s]:
                 self.velocity_x = 0
@@ -79,7 +84,7 @@ class Player(pygame.sprite.Sprite):
 class Dice_machine(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.transform.scale(pygame.image.load("assets/slot machine.png"), (140, 140))
+        self.image = pygame.transform.scale(pygame.image.load("assets/dicelogo.jpg"), (140, 140))
         self.pos = pygame.math.Vector2(dice_machine_x, dice_machine_y)
         self.rect = self.image.get_rect(center=(dice_machine_x, dice_machine_y))
 
@@ -90,6 +95,46 @@ class Dice_machine(pygame.sprite.Sprite):
             screen.blit(roll_message,(5,250))
             if keys[pygame.K_e]:
                 subprocess.Popen(["python", "codes/jeu_de_dé.py"])
+                pygame.quit()
+                sys.exit()
+    
+    def update(self, player):
+        self.collision(player)
+
+class Plinko_machine(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.transform.scale(pygame.image.load("assets/plinkologo.jpg"), (140, 140))
+        self.pos = pygame.math.Vector2(25, 210)
+        self.rect = self.image.get_rect(center=(25, 210))
+
+    def collision(self, player):
+        keys = pygame.key.get_pressed()
+        if self.rect.colliderect(player.rect):
+            screen.blit(ecran_noir,(0,0))
+            screen.blit(roll_message2,(5,250))
+            if keys[pygame.K_e]:
+                subprocess.Popen(["python", "codes/plinko.py"])
+                pygame.quit()
+                sys.exit()
+    
+    def update(self, player):
+        self.collision(player)
+
+class Slots_machine(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.transform.scale(pygame.image.load("assets/slotslogo.png"), (140, 140))
+        self.pos = pygame.math.Vector2(640, 210)
+        self.rect = self.image.get_rect(center=(640, 210))
+
+    def collision(self, player):
+        keys = pygame.key.get_pressed()
+        if self.rect.colliderect(player.rect):
+            screen.blit(ecran_noir,(0,0))
+            screen.blit(roll_message3,(5,250))
+            if keys[pygame.K_e]:
+                subprocess.Popen(["python", "codes/slots.py"])
                 pygame.quit()
                 sys.exit()
     
@@ -112,7 +157,8 @@ def display_end_screen():
 
 player = Player()
 dice_machine = Dice_machine()
-
+plinko_machine = Plinko_machine()
+slots_machine = Slots_machine()
 in_game = True
 
 while running:
@@ -128,9 +174,13 @@ while running:
     if in_game:
         screen.blit(background, (0, 0))
         screen.blit(dice_machine.image, dice_machine.pos)
+        screen.blit(plinko_machine.image, plinko_machine.pos)
+        screen.blit(slots_machine.image, slots_machine.pos)
         screen.blit(player.image, player.pos)
         player.update()
         dice_machine.update(player)
+        plinko_machine.update(player)
+        slots_machine.update(player)
         pygame.draw.rect(screen, (255, 0, 0), (screen_width - 100, 10, 80, 40))  
         exit_text = font.render("Exit", True, (255, 255, 255))
         screen.blit(exit_text, (screen_width - 100, 15))
