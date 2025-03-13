@@ -1,3 +1,4 @@
+#pas encore fonctionel, probleme de chemin pour trouver les fichiers
 import pygame
 import random
 import sys
@@ -7,11 +8,11 @@ import os
 # Paramètres du jeu
 WIDTH, HEIGHT = 1600, 1000
 FPS = 120
-BG_IMAGE_PATH = "assets/bg.png"  # Changer le chemin pour être relatif
-GRID_IMAGE_PATH = "assets/gridline.png"  # Changer le chemin pour être relatif
+BG_IMAGE_PATH = "assets/bg.png"  
+GRID_IMAGE_PATH = "assets/gridline.png"
 SYM_PATH = "assets/symbols"
 TEXT_COLOR = 'White'
-UI_FONT = "assets/font/kidspace.ttf"  # Changer le chemin pour être relatif
+UI_FONT = "assets/font/kidspace.ttf" 
 UI_FONT_SIZE = 30
 WIN_FONT_SIZE = 110
 DEFAULT_IMAGE_SIZE = (300, 300)
