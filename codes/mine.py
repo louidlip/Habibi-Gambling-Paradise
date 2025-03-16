@@ -1,35 +1,29 @@
 import pygame
 import random
 
-# Initialisation de pygame
 pygame.init()
 
-# Constantes du jeu
 WIDTH, HEIGHT = 800, 600
 GRID_SIZE = 5
-CELL_SIZE = 80  # Taille des cases
-BOARD_X, BOARD_Y = 150, 100  # Position du plateau
+CELL_SIZE = 80
+BOARD_X, BOARD_Y = 150, 100
 
-# Couleurs
 WHITE = (255, 255, 255)
 GRAY = (200, 200, 200)
 BLACK = (0, 0, 0)
 GREEN = (50, 200, 50)
 RED = (200, 50, 50)
 
-# Chargement des images
 mine_img = pygame.image.load("assets/mine.jpg")
 mine_img = pygame.transform.scale(mine_img, (CELL_SIZE, CELL_SIZE))
 safe_img = pygame.image.load("assets/money.jpg")
 safe_img = pygame.transform.scale(safe_img, (CELL_SIZE, CELL_SIZE))
 
-# Création de la fenêtre
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Jeu des Mines")
 
-# Variables du jeu
-money = 100  # Argent du joueur
-default_mines = 5  # Nombre de mines par défaut
+money = 100
+default_mines = 5
 
 def generate_grid(num_mines):
     grid = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
