@@ -20,6 +20,8 @@ font = pygame.font.Font("font/Daydream.ttf", 18)
 roll_message = font.render("Voulez-vous jouer au jeu de de ? (appuyez sur 'E')", True, (255, 255, 255))
 roll_message2 = font.render("Voulez-vous jouer au Plinko ? (appuyez sur 'E')", True, (255, 255, 255))
 roll_message3 = font.render("Voulez-vous jouer a la machine a sous ? (appuyez sur 'E')", True, (255, 255, 255))
+roll_message4 = font.render("Voulez-vous jouer aux mines ? (appuyez sur 'E')", True, (255, 255, 255))
+
 x = screen_width * 0.5
 y = screen_height * 0.5
 dice_machine_x = 350
@@ -141,6 +143,26 @@ class Slots_machine(pygame.sprite.Sprite):
     def update(self, player):
         self.collision(player)
 
+class Mines_machine(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.transform.scale(pygame.image.load("assets/minelogo.png"), (140, 140))
+        self.pos = pygame.math.Vector2(350, 450)
+        self.rect = self.image.get_rect(center=(350, 450))
+
+    def collision(self, player):
+        keys = pygame.key.get_pressed()
+        if self.rect.colliderect(player.rect):
+            screen.blit(ecran_noir,(0,0))
+            screen.blit(roll_message4,(5, 250))
+            if keys[pygame.K_e]:
+                subprocess.Popen(["python", "codes/mine.py"])
+                pygame.quit()
+                sys.exit()
+    
+    def update(self, player):
+        self.collision(player)
+
 def display_end_screen():
     keys = pygame.key.get_pressed()
     end_message = font.render("Merci d'avoir joue !", True, (255, 255, 255))
@@ -159,6 +181,7 @@ player = Player()
 dice_machine = Dice_machine()
 plinko_machine = Plinko_machine()
 slots_machine = Slots_machine()
+mines_machine = Mines_machine()
 in_game = True
 
 while running:
@@ -176,11 +199,13 @@ while running:
         screen.blit(dice_machine.image, dice_machine.pos)
         screen.blit(plinko_machine.image, plinko_machine.pos)
         screen.blit(slots_machine.image, slots_machine.pos)
+        screen.blit(mines_machine.image, mines_machine.pos)
         screen.blit(player.image, player.pos)
         player.update()
         dice_machine.update(player)
         plinko_machine.update(player)
         slots_machine.update(player)
+        mines_machine.update(player)
         pygame.draw.rect(screen, (255, 0, 0), (screen_width - 100, 10, 80, 40))  
         exit_text = font.render("Exit", True, (255, 255, 255))
         screen.blit(exit_text, (screen_width - 100, 15))
