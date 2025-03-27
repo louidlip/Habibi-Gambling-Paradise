@@ -78,7 +78,8 @@ waiting_for_start = True
 game_over = False
 grid = generate_grid(default_mines)
 discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
-earned_money = 0  # Variable pour suivre l'argent accumulé pendant le jeu
+safe_cells_count = sum([1 for row in grid for cell in row if not cell])  # Compter le nombre de cases sûres
+discovered_safe_cells = 0  # Nombre de cases sûres découvertes par le joueur
 
 while running:
     screen.fill(WHITE)
@@ -111,11 +112,7 @@ while running:
                 if 300 <= x <= 500 and 500 <= y <= 550:  # Bouton "Jouer"
                     if money >= 10:  # Vérifier si le joueur a assez d'argent pour commencer
                         money -= 10  # Le joueur paie 10€ pour commencer
-                        earned_money = 0  # Réinitialiser l'argent gagné pendant la partie
-                        for row in range(GRID_SIZE):
-                            for col in range(GRID_SIZE):
-                                if not grid[row][col]:  # Si ce n'est pas une mine, le joueur peut potentiellement gagner 1€
-                                    earned_money += 1  # Réduire la récompense à 1€ par case sûre
+                        discovered_safe_cells = 0  # Réinitialiser le nombre de cases sûres découvertes
                         waiting_for_start = False
                         game_over = False
                         discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
@@ -125,7 +122,9 @@ while running:
             else:
                 if 300 <= x <= 500 and 570 <= y <= 620:  # Bouton "Arrêter"
                     # Le joueur gagne l'argent seulement lorsqu'il appuie sur "Arrêter"
-                    money += earned_money
+                    # Le montant gagné est basé sur le nombre de cases sûres découvertes
+                    if discovered_safe_cells > 0:
+                        money += (4*discovered_safe_cells)  # Gagner de l'argent en fonction des cases sûres découvertes
                     waiting_for_start = True
                     game_over = False
                     discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
@@ -137,11 +136,11 @@ while running:
                         discovered[cell[0]][cell[1]] = True
                         if grid[cell[0]][cell[1]]:  # Si c'est une mine
                             print("Game Over!")
-                            # Le joueur perd uniquement l'argent gagné pendant la partie
-                            earned_money = 0
+                            # Le joueur perd tout l'argent gagné et le jeu se termine
+                            discovered_safe_cells = 0
                             game_over = True
                         else:
-                            earned_money += 1  # Réduit à 1€ par case sûre
+                            discovered_safe_cells += 1  # Augmenter le nombre de cases sûres découvertes
         elif event.type == pygame.KEYDOWN and game_over:
             if event.key == pygame.K_r:
                 waiting_for_start = True
