@@ -1,5 +1,6 @@
 import pygame
 import random
+from argent import get_argent, ajouter_argent, retirer_argent
 
 pygame.init()
 
@@ -21,9 +22,6 @@ safe_img = pygame.transform.scale(safe_img, (CELL_SIZE, CELL_SIZE))
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Jeu des Mines")
-
-money = 100
-default_mines = 3  # Fixer le nombre de mines à 3
 
 def generate_grid(num_mines):
     grid = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
@@ -76,27 +74,26 @@ def display_not_enough_money():
 running = True
 waiting_for_start = True
 game_over = False
+default_mines = 3
 grid = generate_grid(default_mines)
 discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
-safe_cells_count = sum([1 for row in grid for cell in row if not cell])  # Compter le nombre de cases sûres
-discovered_safe_cells = 0  # Nombre de cases sûres découvertes par le joueur
+discovered_safe_cells = 0
 
 while running:
     screen.fill(WHITE)
     
-    # Afficher le compteur d'argent en haut à gauche
     font = pygame.font.Font(None, 36)
-    money_text = font.render(f"Argent: {money}€", True, BLACK)
+    money_text = font.render(f"Argent: {get_argent()}€", True, BLACK)
     screen.blit(money_text, (10, 10))
     
     if waiting_for_start:
-        if money >= 10:  # Vérifier si le joueur a assez d'argent pour jouer
+        if get_argent() >= 10:
             draw_button()
         else:
-            display_not_enough_money()  # Afficher un message d'erreur si l'argent est insuffisant
+            display_not_enough_money()
     else:
         draw_grid()
-        draw_stop_button()  # Afficher le bouton "Arrêter"
+        draw_stop_button()
     
     if game_over:
         display_game_over()
@@ -109,10 +106,10 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             if waiting_for_start:
-                if 300 <= x <= 500 and 500 <= y <= 550:  # Bouton "Jouer"
-                    if money >= 10:  # Vérifier si le joueur a assez d'argent pour commencer
-                        money -= 10  # Le joueur paie 10€ pour commencer
-                        discovered_safe_cells = 0  # Réinitialiser le nombre de cases sûres découvertes
+                if 300 <= x <= 500 and 500 <= y <= 550:
+                    if get_argent() >= 10:
+                        retirer_argent(10)
+                        discovered_safe_cells = 0
                         waiting_for_start = False
                         game_over = False
                         discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
@@ -120,27 +117,24 @@ while running:
                     else:
                         print("Pas assez d'argent pour jouer!")
             else:
-                if 300 <= x <= 500 and 570 <= y <= 620:  # Bouton "Arrêter"
-                    # Le joueur gagne l'argent seulement lorsqu'il appuie sur "Arrêter"
-                    # Le montant gagné est basé sur le nombre de cases sûres découvertes
+                if 300 <= x <= 500 and 570 <= y <= 620:
                     if discovered_safe_cells > 0:
-                        money += (4*discovered_safe_cells)  # Gagner de l'argent en fonction des cases sûres découvertes
+                        ajouter_argent(4 * discovered_safe_cells)
                     waiting_for_start = True
                     game_over = False
                     discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
                     grid = generate_grid(default_mines)
-                    
+                
                 if not game_over:
                     cell = get_cell(event.pos)
                     if cell and not discovered[cell[0]][cell[1]]:
                         discovered[cell[0]][cell[1]] = True
-                        if grid[cell[0]][cell[1]]:  # Si c'est une mine
+                        if grid[cell[0]][cell[1]]:
                             print("Game Over!")
-                            # Le joueur perd tout l'argent gagné et le jeu se termine
                             discovered_safe_cells = 0
                             game_over = True
                         else:
-                            discovered_safe_cells += 1  # Augmenter le nombre de cases sûres découvertes
+                            discovered_safe_cells += 1
         elif event.type == pygame.KEYDOWN and game_over:
             if event.key == pygame.K_r:
                 waiting_for_start = True
