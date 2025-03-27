@@ -22,10 +22,8 @@ roll_message2 = font.render("Voulez-vous jouer au Plinko ? (appuyez sur 'E')", T
 roll_message3 = font.render("Voulez-vous jouer a la machine a sous ? (appuyez sur 'E')", True, (255, 255, 255))
 roll_message4 = font.render("Voulez-vous jouer aux mines ? (appuyez sur 'E')", True, (255, 255, 255))
 
-x = screen_width * 0.5
-y = screen_height * 0.5
-dice_machine_x = 350
-dice_machine_y = 30
+x = screen_width * 0.5 - 45
+y = screen_height * 0.5 - 80
 Player_speed = 5
 running = True
 
@@ -87,9 +85,9 @@ class Dice_machine(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load("assets/dicelogo.jpg"), (140, 140))
-        self.pos = pygame.math.Vector2(dice_machine_x, dice_machine_y)
-        self.rect = self.image.get_rect(center=(dice_machine_x, dice_machine_y))
-
+        self.pos = pygame.math.Vector2(350, 30)
+        self.rect = self.image.get_rect(center=(350, 30))
+        self.rect = pygame.Rect(350, 30, 100, 100)
     def collision(self, player):
         keys = pygame.key.get_pressed()
         if self.rect.colliderect(player.rect):
@@ -108,7 +106,7 @@ class Plinko_machine(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load("assets/plinkologo.jpg"), (140, 140))
         self.pos = pygame.math.Vector2(25, 210)
-        self.rect = self.image.get_rect(center=(25, 210))
+        self.rect = pygame.Rect(25, 210, 100, 100)
 
     def collision(self, player):
         keys = pygame.key.get_pressed()
@@ -128,8 +126,7 @@ class Slots_machine(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load("assets/slotslogo.png"), (140, 140))
         self.pos = pygame.math.Vector2(640, 210)
-        self.rect = self.image.get_rect(center=(640, 210))
-
+        self.rect = pygame.Rect(640, 210, 100, 100)
     def collision(self, player):
         keys = pygame.key.get_pressed()
         if self.rect.colliderect(player.rect):
@@ -148,8 +145,8 @@ class Mines_machine(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load("assets/minelogo.png"), (140, 140))
         self.pos = pygame.math.Vector2(350, 450)
-        self.rect = self.image.get_rect(center=(350, 450))
-
+        self.rect = pygame.Rect(350, 450, 100, 100)
+    
     def collision(self, player):
         keys = pygame.key.get_pressed()
         if self.rect.colliderect(player.rect):
