@@ -23,7 +23,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Jeu des Mines")
 
 money = 100
-default_mines = 5
+default_mines = 3  # Fixer le nombre de mines à 3
 
 def generate_grid(num_mines):
     grid = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
@@ -57,36 +57,48 @@ def draw_button():
     text = font.render("Jouer", True, WHITE)
     screen.blit(text, (375, 515))
 
-def draw_mine_controls():
+def draw_stop_button():
+    pygame.draw.rect(screen, RED, (300, 570, 200, 50))
     font = pygame.font.Font(None, 36)
-    text = font.render(f"Mines: {default_mines}", True, BLACK)
-    screen.blit(text, (50, 500))
-    
-    pygame.draw.rect(screen, GREEN, (50, 540, 30, 30))
-    plus_text = font.render("+", True, WHITE)
-    screen.blit(plus_text, (60, 545))
-    
-    pygame.draw.rect(screen, RED, (90, 540, 30, 30))
-    minus_text = font.render("-", True, WHITE)
-    screen.blit(minus_text, (100, 545))
+    text = font.render("Arrêter", True, WHITE)
+    screen.blit(text, (375, 585))
+
+def display_game_over():
+    font = pygame.font.Font(None, 48)
+    text = font.render("GAME OVER! Appuyez sur R pour recommencer.", True, RED)
+    screen.blit(text, (200, 300))
+
+def display_not_enough_money():
+    font = pygame.font.Font(None, 36)
+    text = font.render("Pas assez d'argent pour jouer !", True, RED)
+    screen.blit(text, (250, 300))
 
 running = True
 waiting_for_start = True
 game_over = False
 grid = generate_grid(default_mines)
 discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+earned_money = 0  # Variable pour suivre l'argent accumulé pendant le jeu
 
 while running:
     screen.fill(WHITE)
     
+    # Afficher le compteur d'argent en haut à gauche
+    font = pygame.font.Font(None, 36)
+    money_text = font.render(f"Argent: {money}€", True, BLACK)
+    screen.blit(money_text, (10, 10))
+    
     if waiting_for_start:
-        draw_button()
-        draw_mine_controls()
+        if money >= 10:  # Vérifier si le joueur a assez d'argent pour jouer
+            draw_button()
+        else:
+            display_not_enough_money()  # Afficher un message d'erreur si l'argent est insuffisant
     else:
         draw_grid()
-        font = pygame.font.Font(None, 36)
-        money_text = font.render(f"Argent: {money}€", True, BLACK)
-        screen.blit(money_text, (10, 10))
+        draw_stop_button()  # Afficher le bouton "Arrêter"
+    
+    if game_over:
+        display_game_over()
     
     pygame.display.flip()
     
@@ -97,27 +109,44 @@ while running:
             x, y = event.pos
             if waiting_for_start:
                 if 300 <= x <= 500 and 500 <= y <= 550:  # Bouton "Jouer"
-                    waiting_for_start = False
+                    if money >= 10:  # Vérifier si le joueur a assez d'argent pour commencer
+                        money -= 10  # Le joueur paie 10€ pour commencer
+                        earned_money = 0  # Réinitialiser l'argent gagné pendant la partie
+                        for row in range(GRID_SIZE):
+                            for col in range(GRID_SIZE):
+                                if not grid[row][col]:  # Si ce n'est pas une mine, le joueur peut potentiellement gagner 1€
+                                    earned_money += 1  # Réduire la récompense à 1€ par case sûre
+                        waiting_for_start = False
+                        game_over = False
+                        discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+                        grid = generate_grid(default_mines)
+                    else:
+                        print("Pas assez d'argent pour jouer!")
+            else:
+                if 300 <= x <= 500 and 570 <= y <= 620:  # Bouton "Arrêter"
+                    # Le joueur gagne l'argent seulement lorsqu'il appuie sur "Arrêter"
+                    money += earned_money
+                    waiting_for_start = True
                     game_over = False
                     discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
                     grid = generate_grid(default_mines)
-                elif 50 <= x <= 80 and 540 <= y <= 570:  # Augmenter mines
-                    default_mines = min(default_mines + 1, GRID_SIZE * GRID_SIZE - 1)
-                elif 90 <= x <= 120 and 540 <= y <= 570:  # Diminuer mines
-                    default_mines = max(default_mines - 1, 1)
-            else:
-                cell = get_cell(event.pos)
-                if cell and not discovered[cell[0]][cell[1]]:
-                    discovered[cell[0]][cell[1]] = True
-                    if grid[cell[0]][cell[1]]:
-                        print("Game Over!")
-                        money -= 10
-                        game_over = True
-                    else:
-                        money += 5
+                    
+                if not game_over:
+                    cell = get_cell(event.pos)
+                    if cell and not discovered[cell[0]][cell[1]]:
+                        discovered[cell[0]][cell[1]] = True
+                        if grid[cell[0]][cell[1]]:  # Si c'est une mine
+                            print("Game Over!")
+                            # Le joueur perd uniquement l'argent gagné pendant la partie
+                            earned_money = 0
+                            game_over = True
+                        else:
+                            earned_money += 1  # Réduit à 1€ par case sûre
         elif event.type == pygame.KEYDOWN and game_over:
             if event.key == pygame.K_r:
                 waiting_for_start = True
                 game_over = False
+                grid = generate_grid(default_mines)
+                discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
 
 pygame.quit()
