@@ -1,6 +1,7 @@
 import pygame
 import sys
 import subprocess
+from argent import get_argent, ajouter_argent, retirer_argent
 
 pygame.init()
 
@@ -179,6 +180,7 @@ dice_machine = Dice_machine()
 plinko_machine = Plinko_machine()
 slots_machine = Slots_machine()
 mines_machine = Mines_machine()
+argent_text = font.render(f"Argent: {get_argent()}$", True, (255, 255, 0))
 in_game = True
 
 while running:
@@ -206,6 +208,7 @@ while running:
         pygame.draw.rect(screen, (255, 0, 0), (screen_width - 100, 10, 80, 40))  
         exit_text = font.render("Exit", True, (255, 255, 255))
         screen.blit(exit_text, (screen_width - 100, 15))
+        screen.blit(argent_text, (10, 20))
     else:
         display_end_screen()
 
