@@ -2,6 +2,7 @@ import pygame
 import random
 import sys
 import subprocess
+from argent import get_argent, ajouter_argent, retirer_argent
 
 pygame.init()
 
@@ -39,7 +40,6 @@ dice_results = [None, None]
 game_outcome = None
 rolling = False
 animation_frames = 20
-score = 0
 point = None  # Le point est le nombre que le joueur doit obtenir après le premier lancer
 score_flash = False  # Pour l'animation de score
 
@@ -48,16 +48,16 @@ def roll_dice():
     return random.randint(1, 6), random.randint(1, 6)
 
 def check_game_outcome(dice_results):
-    global score, point, score_flash
+    global point, score_flash
     total = sum(dice_results)
     
     if point is None:  # Premier lancer (Come Out Roll)
         if total in [7, 11]:  # Le joueur gagne immédiatement
-            score += 50
+            ajouter_argent(50)  # Ajouter de l'argent
             score_flash = True
             return "win"
         elif total in [2, 3, 12]:  # Le joueur perd immédiatement
-            score -= 5
+            retirer_argent(5)  # Retirer de l'argent
             score_flash = True
             return "lose"
         else:  # Le joueur établit un point
@@ -65,12 +65,12 @@ def check_game_outcome(dice_results):
             return "point"
     else:  # Point Roll
         if total == point:  # Le joueur fait son point et gagne
-            score += 30
+            ajouter_argent(30)  # Ajouter de l'argent
             score_flash = True
             point = None  # Réinitialiser le point
             return "win"
         elif total == 7:  # Le joueur perd
-            score -= 5
+            retirer_argent(5)  # Retirer de l'argent
             score_flash = True
             point = None  # Réinitialiser le point
             return "lose"
@@ -137,18 +137,15 @@ while True:
         elif game_outcome == "point":
             screen.blit(font.render(f"Point a obtenir: {point}", True, (255, 255, 255)), (screen_width // 2 - 120, 400))
 
-    # Animation du score
-    if score_flash:
-        score_text = font.render(f"Score: {score}", True, (255, 255, 0))  # Score en jaune quand il change
-    else:
-        score_text = font.render(f"Score: {score}", True, (255, 255, 255))  # Score normal
+    # Animation du score (argent)
+    argent_text = font.render(f"Argent: {get_argent()}$", True, (255, 255, 0))  # Argent en jaune quand il change
     
     # Réinitialiser l'animation du score après une courte durée
     if score_flash:
         pygame.time.delay(500)
         score_flash = False
     
-    screen.blit(score_text, (screen_width - score_text.get_width() - 20, 20))
+    screen.blit(argent_text, (screen_width - argent_text.get_width() - 20, 20))
     screen.blit(esc_message, (75, 550))
     pygame.display.flip()
     clock.tick(60)
