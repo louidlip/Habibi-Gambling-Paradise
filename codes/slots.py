@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+import subprocess  # Permet d'exécuter un autre fichier Python
 
 # Initialisation de pygame
 pygame.init()
@@ -14,6 +15,7 @@ pygame.display.set_caption("Machine à sous")
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
+RED = (255, 0, 0)
 
 # Police de texte
 font = pygame.font.Font(None, 36)
@@ -61,6 +63,13 @@ def check_win(reels):
             return True
     return False
 
+# Fonction pour afficher le bouton Exit
+def draw_exit_button():
+    exit_button_rect = pygame.Rect(WIDTH - 100, 10, 90, 40)
+    pygame.draw.rect(screen, RED, exit_button_rect)
+    draw_text("EXIT", WIDTH - 90, 20, WHITE)
+    return exit_button_rect
+
 # Fonction principale pour le jeu
 def run_game():
     running = True
@@ -92,21 +101,30 @@ def run_game():
         pygame.draw.rect(screen, GREEN, (WIDTH // 2 - 75, HEIGHT - 100, 150, 50))
         draw_text("SPIN", WIDTH // 2 - 40, HEIGHT - 85, WHITE)
 
-        # Gestion de l'interaction (clic sur le bouton de spin)
+        # Affichage du bouton EXIT
+        exit_button_rect = draw_exit_button()
+
+        # Gestion de l'interaction (clic sur le bouton "Spin")
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = pygame.mouse.get_pressed()
 
+        # Si le joueur clique sur le bouton "Spin"
         if WIDTH // 2 - 75 < mouse_pos[0] < WIDTH // 2 + 75 and HEIGHT - 100 < mouse_pos[1] < HEIGHT - 50:
-            if mouse_click[0] == 1 and credits > 0:  # Si le joueur a cliqué sur le bouton "Spin" et a des crédits
+            if mouse_click[0] == 1 and credits > 0:  # Si le joueur a des crédits
                 credits -= 1  # Déduction d'un crédit
                 reels = spin_reels()  # Spin des rouleaux
                 if check_win(reels):  # Vérifier si le joueur a gagné
-                    win_amount = 10  # Par exemple, gagner 10 crédits si trois symboles identiques sont alignés
+                    win_amount = 10  # Gagner 10 crédits si trois symboles identiques
                     credits += win_amount
                 else:
                     win_amount = -1  # Perte d'un crédit
                 time.sleep(1)  # Pause pour simuler le temps de spin
-        
+
+        # Vérification si le joueur clique sur le bouton EXIT
+        if exit_button_rect.collidepoint(mouse_pos) and mouse_click[0] == 1:
+            running = False  # Ferme le jeu (retour au lobby ou fermeture de la fenêtre)
+            subprocess.run(['python', 'codes/Lobby.py'])  # Exécute le fichier lobby.py pour revenir au lobby
+
         # Actualisation de l'écran
         pygame.display.flip()
 
