@@ -24,7 +24,7 @@ ecran_noir = pygame.image.load("assets/surface noire.jpg")
 roll_message = small_font.render("Appuyez sur ESPACE pour lancer les dés", True, (255, 255, 255))
 win_message = font.render("Vous avez gagne !", True, (0, 255, 0))
 lose_message = font.render("Vous avez perdu !", True, (255, 0, 0))
-esc_message = small_font.render("Appuyez sur 'E' pour retourner au Lobby", True, (255, 255, 255))
+esc_message = small_font.render("Appuyez sur Escp pour retourner au Lobby", True, (255, 255, 255))
 
 # Images des dés
 dice_images = [
@@ -97,12 +97,12 @@ def dice_animation():
         pygame.time.delay(50 + i * 10)
         
     dice_results = roll_dice()  # Lancer les dés après l'animation
-    rolling = False
+    rolling = False  # L'animation est terminée
 
 def exit_possibility():
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_e]:
-        subprocess.Popen(["python", "codes/Lobby.py"])
+    if keys[pygame.K_ESCAPE]:  # Vérifier si Échap est pressé
+        subprocess.Popen(["python", "codes/Lobby.py"])  # Ouvrir le lobby
         pygame.quit()
         sys.exit()
 
@@ -112,11 +112,11 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE and not rolling:
+            if event.key == pygame.K_SPACE and not rolling:  # S'assurer que le lancer ne se produit pas pendant l'animation
                 dice_animation()
                 game_outcome = check_game_outcome(dice_results)
 
-    exit_possibility()
+    exit_possibility()  # Vérifier si Échap est pressé pour quitter
     screen.blit(background_image, (0, 0))
     screen.blit(roll_message, (90, 300))
     
@@ -135,7 +135,7 @@ while True:
         elif game_outcome == "lose":
             screen.blit(lose_message, (screen_width // 2 - lose_message.get_width() // 2, 400))
         elif game_outcome == "point":
-            screen.blit(font.render(f"Point a obtenir: {point}", True, (255, 255, 255)), (screen_width // 2 - 120, 400))
+            screen.blit(font.render(f"Point a obtenir: {point}", True, (255, 255, 255)), (screen_width // 2 - 230, 400))
 
     # Animation du score (argent)
     argent_text = font.render(f"Argent: {get_argent()}$", True, (255, 255, 0))  # Argent en jaune quand il change
@@ -146,6 +146,6 @@ while True:
         score_flash = False
     
     screen.blit(argent_text, (screen_width - argent_text.get_width() - 20, 20))
-    screen.blit(esc_message, (75, 550))
+    screen.blit(esc_message, (75, 550))  # Mettre à jour le message pour 'Échap'
     pygame.display.flip()
     clock.tick(60)
