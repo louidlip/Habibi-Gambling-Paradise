@@ -20,118 +20,102 @@ RED = (255, 0, 0)
 # Police de texte
 font = pygame.font.Font(None, 36)
 
-# Chargement des images des symboles (remplacer par vos propres images)
-symbols = ["assets/slots/siete.png", "assets/slots/tsinelas.png", "assets/slots/banyal.png"]  # Remplacez par les chemins de vos images
+# Chargement des images des symboles
+symbols = ["assets/slots/siete.png", "assets/slots/tsinelas.png", "assets/slots/banyal.png"]
 images = [pygame.image.load(img) for img in symbols]
 image_width, image_height = images[0].get_size()
 
-# Fonction pour afficher le texte
 def draw_text(text, x, y, color=BLACK):
     label = font.render(text, True, color)
     screen.blit(label, (x, y))
 
-# Fonction pour afficher les rouleaux
 def draw_reels(reels):
     x_offset = 50
     for reel in reels:
         for i, image in enumerate(reel):
             screen.blit(image, (x_offset, 100 + i * image_height))
-        x_offset += image_width + 10  # Espace entre les rouleaux
+        x_offset += image_width + 10
 
-# Fonction pour faire tourner les rouleaux (avec animation)
 def spin_reels():
-    reels = [random.sample(images, 3) for _ in range(3)]  # Initialisation des rouleaux
-    spin_duration = 1.5  # Durée de l'animation en secondes
+    reels = [random.sample(images, 3) for _ in range(3)]
+    spin_duration = 1.5
     start_time = time.time()
-    spin_result = [random.sample(images, 3) for _ in range(3)]  # Résultat final des rouleaux
-
-    # Animation des rouleaux
+    
     while time.time() - start_time < spin_duration:
-        temp_reels = []
-        for reel in range(3):
-            temp_reels.append([random.choice(images) for _ in range(3)])
+        temp_reels = [[random.choice(images) for _ in range(3)] for _ in range(3)]
         draw_reels(temp_reels)
         pygame.display.flip()
-        pygame.time.wait(50)  # Pause pour l'animation
-    return spin_result
+        pygame.time.wait(50)
+    
+    return [random.sample(images, 3) for _ in range(3)]
 
-# Fonction pour vérifier si le joueur a gagné
 def check_win(reels):
-    # Vérifier si tous les symboles sont identiques sur une ligne
     for i in range(3):
         if reels[0][i] == reels[1][i] == reels[2][i]:
             return True
     return False
 
-# Fonction pour afficher le bouton Exit
 def draw_exit_button():
     exit_button_rect = pygame.Rect(WIDTH - 100, 10, 90, 40)
     pygame.draw.rect(screen, RED, exit_button_rect)
     draw_text("EXIT", WIDTH - 90, 20, WHITE)
     return exit_button_rect
 
-# Fonction principale pour le jeu
 def run_game():
     running = True
-    credits = 100  # Crédits du joueur
-    reels = [random.sample(images, 3) for _ in range(3)]  # Initialisation des rouleaux avec des images aléatoires
-    win_amount = 0  # Gain de la partie
-
+    credits = 100
+    bet = 1
+    reels = [random.sample(images, 3) for _ in range(3)]
+    win_amount = 0
+    
     while running:
         screen.fill(WHITE)
-
-        # Gestion des événements
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-        # Affichage des crédits
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_w:
+                    bet *= 2
+                elif event.key == pygame.K_x and bet > 1:
+                    bet //= 2
+        
         draw_text(f"Crédits: {credits}", 10, 10)
-
-        # Affichage du gain de la partie (si applicable)
+        draw_text(f"Mise: {bet}", 10, 50)
+        
         if win_amount > 0:
             draw_text(f"Gagné: {win_amount}", 250, 50, GREEN)
         elif win_amount < 0:
-            draw_text(f"Perdu: {-win_amount}", 250, 50, (255, 0, 0))  # Perte en rouge
-
-        # Affichage des rouleaux
+            draw_text(f"Perdu: {-win_amount}", 250, 50, RED)
+        
         draw_reels(reels)
-
-        # Affichage du bouton de spin
+        
         pygame.draw.rect(screen, GREEN, (WIDTH // 2 - 75, HEIGHT - 100, 150, 50))
         draw_text("SPIN", WIDTH // 2 - 40, HEIGHT - 85, WHITE)
-
-        # Affichage du bouton EXIT
+        
         exit_button_rect = draw_exit_button()
-
-        # Gestion de l'interaction (clic sur le bouton "Spin")
+        
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = pygame.mouse.get_pressed()
-
-        # Si le joueur clique sur le bouton "Spin"
+        
         if WIDTH // 2 - 75 < mouse_pos[0] < WIDTH // 2 + 75 and HEIGHT - 100 < mouse_pos[1] < HEIGHT - 50:
-            if mouse_click[0] == 1 and credits > 0:  # Si le joueur a des crédits
-                credits -= 1  # Déduction d'un crédit
-                reels = spin_reels()  # Spin des rouleaux
-                if check_win(reels):  # Vérifier si le joueur a gagné
-                    win_amount = 10  # Gagner 10 crédits si trois symboles identiques
+            if mouse_click[0] == 1 and credits >= bet:
+                credits -= bet
+                reels = spin_reels()
+                if check_win(reels):
+                    win_amount = bet * 10
                     credits += win_amount
                 else:
-                    win_amount = -1  # Perte d'un crédit
-                time.sleep(1)  # Pause pour simuler le temps de spin
-
-        # Vérification si le joueur clique sur le bouton EXIT
+                    win_amount = -bet
+                time.sleep(1)
+        
         if exit_button_rect.collidepoint(mouse_pos) and mouse_click[0] == 1:
-            running = False  # Ferme le jeu (retour au lobby ou fermeture de la fenêtre)
-            subprocess.run(['python', 'codes/Lobby.py'])  # Exécute le fichier lobby.py pour revenir au lobby
-
-        # Actualisation de l'écran
+            running = False
+            subprocess.run(['python', 'codes/Lobby.py'])
+        
         pygame.display.flip()
-
-        # Limiter la fréquence de mise à jour de l'écran (60 FPS)
         pygame.time.Clock().tick(60)
 
     pygame.quit()
 
-# Lancer le jeu
 run_game()
