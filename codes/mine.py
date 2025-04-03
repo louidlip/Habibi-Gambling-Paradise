@@ -1,6 +1,7 @@
 import pygame
 import random
 from argent import get_argent, ajouter_argent, retirer_argent
+import subprocess  # Pour lancer le script du lobby
 
 pygame.init()
 
@@ -64,12 +65,17 @@ def draw_stop_button():
 def display_game_over():
     font = pygame.font.Font(None, 48)
     text = font.render("GAME OVER! Appuyez sur R pour recommencer.", True, RED)
-    screen.blit(text, (200, 300))
+    screen.blit(text, (10, 200))
+    
+    # Ajouter un message pour informer l'utilisateur de l'option "Échap"
+    escape_text = font.render("Appuyez sur Échap pour retourner au lobby.", True, RED)
+    screen.blit(escape_text, (50, 370))
 
-def display_not_enough_money():
+
+def display_return_to_lobby():
     font = pygame.font.Font(None, 36)
-    text = font.render("Pas assez d'argent pour jouer !", True, RED)
-    screen.blit(text, (250, 300))
+    text = font.render("Pas assez d'argent ! Appuyez sur Échap pour retourner au lobby.", True, RED)
+    screen.blit(text, (150, 250))
 
 running = True
 waiting_for_start = True
@@ -78,6 +84,7 @@ default_mines = 3
 grid = generate_grid(default_mines)
 discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
 discovered_safe_cells = 0
+waiting_for_lobby_response = False  # Pour savoir si on attend une réponse de l'utilisateur
 
 while running:
     screen.fill(WHITE)
@@ -90,7 +97,7 @@ while running:
         if get_argent() >= 10:
             draw_button()
         else:
-            display_not_enough_money()
+            display_return_to_lobby()  # Affichage du message de game over ici
     else:
         draw_grid()
         draw_stop_button()
@@ -135,11 +142,17 @@ while running:
                             game_over = True
                         else:
                             discovered_safe_cells += 1
-        elif event.type == pygame.KEYDOWN and game_over:
-            if event.key == pygame.K_r:
-                waiting_for_start = True
-                game_over = False
-                grid = generate_grid(default_mines)
-                discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+
+        elif event.type == pygame.KEYDOWN:
+            if game_over:
+                if event.key == pygame.K_r:
+                    waiting_for_start = True
+                    game_over = False
+                    grid = generate_grid(default_mines)
+                    discovered = [[False for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+            elif event.key == pygame.K_ESCAPE:  # Appuyer sur Échap pour revenir au lobby
+                subprocess.Popen(["python", "codes/Lobby.py"])  # Retour au lobby
+                pygame.quit()  # Ferme le jeu actuel
+                running = False  # Met fin à la boucle principale
 
 pygame.quit()
