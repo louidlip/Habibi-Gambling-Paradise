@@ -1,108 +1,4 @@
 README.md
-def noeud(nom, fg = None, fd = None) :
-    return {'racine': nom, 'fg' : fg, 'fd': fd}
-# création des noeuds
-k = noeud('k')
-f = noeud('f')
-e = noeud('e', k, None)
-b = noeud('b', e, f)
-m = noeud('m')
-j = noeud('j', m, None)
-i = noeud('i')
-d = noeud('d', i, j)
-h = noeud('h')
-c = noeud('c', None, h)
-a = noeud('a', c, d)
-racine = noeud('r', a, b)
-# création de l’arbre
-def construit(arbre) :
-    if arbre == None :
-        return []
-    else:
-        return [arbre['racine'],construit(arbre['fg']),construit(arbre['fd'])]
-arbre1=construit(racine)
-print(arbre1)
-
-
-def hauteur(arbre):
-    # Si l'arbre est vide (liste vide ou tuple vide)
-    if not arbre:
-        return -1
-    else:
-        # Si l'arbre est non vide, calculer la hauteur des sous-arbres
-        h1 = 1 + hauteur(arbre[1]) if len(arbre) > 1 else 0
-        h2 = 1 + hauteur(arbre[2]) if len(arbre) > 2 else 0
-    return max(h1, h2)
-
-
-print("Hauteur de l'arbre arbre1:")
-print(hauteur(arbre1))
-
-import networkx as nx
-import matplotlib.pyplot as plt
-
-def repr_graph(arbre, size=(8,8), null_node=False):
-    """
-    arbre : liste de listes (ou tuple de tuples)
-    size : tuple de 2 entiers. Si size est int -> (size, size)
-    null_node : si True, trace les liaisons vers les sous-arbres vides
-    Dessine l'arbre arbre dans une fenêtre
-    """
-    def parkour(arbre, noeuds, branches, labels, positions, profondeur, pos_courante, pos_parent, null_node):
-        if arbre :
-            noeuds[0].append(pos_courante)
-            positions[pos_courante] = (pos_courante, profondeur)
-            profondeur -= 1
-            labels[pos_courante] = str(arbre[0])
-            branches[0].append((pos_courante, pos_parent))
-            pos_gauche = pos_courante - 2**profondeur
-            parkour(arbre[1], noeuds, branches, labels, positions, profondeur, pos_gauche, pos_courante, null_node)
-            pos_droit = pos_courante + 2**profondeur
-            parkour(arbre[2], noeuds, branches, labels, positions, profondeur, pos_droit, pos_courante, null_node)
-        elif null_node:
-            noeuds[1].append(pos_courante)
-            positions[pos_courante] = (pos_courante, profondeur)
-            branches[1].append((pos_courante, pos_parent))
-
-    if not arbre:
-        return
-
-    branches = [[]]
-    profondeur = hauteur(arbre)
-    pos_courante = 2**profondeur
-    noeuds = [[pos_courante]]
-    positions = {pos_courante: (pos_courante, profondeur)}
-    labels = {pos_courante: str(arbre[0])}
-
-    if null_node:
-        branches.append([])
-        noeuds.append([])
-
-    profondeur -= 1
-    parkour(arbre[1], noeuds, branches, labels, positions, profondeur, pos_courante - 2**profondeur, pos_courante, null_node)
-    parkour(arbre[2], noeuds, branches, labels, positions, profondeur, pos_courante + 2**profondeur, pos_courante, null_node)
-
-    mon_arbre = nx.Graph()
-
-    if type(size) == int:
-        size = (size, size)
-
-    plt.figure(figsize=size)
-    nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[0], node_color="white", node_size=550, edgecolors="blue")
-    nx.draw_networkx_edges(mon_arbre, positions, edgelist=branches[0], edge_color="black", width=2)
-    nx.draw_networkx_labels(mon_arbre, positions, labels)
-
-    if null_node:
-        nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[1], node_color="white", node_size=50, edgecolors="grey")
-        nx.draw_networkx_edges(mon_arbre, positions, edgelist=branches[1], edge_color="grey", width=1)
-
-    ax = plt.gca()
-    ax.margins(0.1)
-    plt.axis("off")
-    plt.show()
-
-
-repr_graph(arbre1,(4,3),False)
 
 
 
@@ -349,4 +245,110 @@ Musique 8 bit typique d'un Jeu NES, un peu orientale :
 ![lobby hijab](https://github.com/user-attachments/assets/c7b5c3c3-a4da-4ce3-8ec0-6af0b30718ed)
 
 ![image](https://github.com/user-attachments/assets/335279cd-68bf-4eab-9200-55328e8a2393)
+
+def noeud(nom, fg = None, fd = None) :
+    return {'racine': nom, 'fg' : fg, 'fd': fd}
+# création des noeuds
+k = noeud('k')
+f = noeud('f')
+e = noeud('e', k, None)
+b = noeud('b', e, f)
+m = noeud('m')
+j = noeud('j', m, None)
+i = noeud('i')
+d = noeud('d', i, j)
+h = noeud('h')
+c = noeud('c', None, h)
+a = noeud('a', c, d)
+racine = noeud('r', a, b)
+# création de l’arbre
+def construit(arbre) :
+    if arbre == None :
+        return []
+    else:
+        return [arbre['racine'],construit(arbre['fg']),construit(arbre['fd'])]
+arbre1=construit(racine)
+print(arbre1)
+
+
+def hauteur(arbre):
+    # Si l'arbre est vide (liste vide ou tuple vide)
+    if not arbre:
+        return -1
+    else:
+        # Si l'arbre est non vide, calculer la hauteur des sous-arbres
+        h1 = 1 + hauteur(arbre[1]) if len(arbre) > 1 else 0
+        h2 = 1 + hauteur(arbre[2]) if len(arbre) > 2 else 0
+    return max(h1, h2)
+
+
+print("Hauteur de l'arbre arbre1:")
+print(hauteur(arbre1))
+
+import networkx as nx
+import matplotlib.pyplot as plt
+
+def repr_graph(arbre, size=(8,8), null_node=False):
+    """
+    arbre : liste de listes (ou tuple de tuples)
+    size : tuple de 2 entiers. Si size est int -> (size, size)
+    null_node : si True, trace les liaisons vers les sous-arbres vides
+    Dessine l'arbre arbre dans une fenêtre
+    """
+    def parkour(arbre, noeuds, branches, labels, positions, profondeur, pos_courante, pos_parent, null_node):
+        if arbre :
+            noeuds[0].append(pos_courante)
+            positions[pos_courante] = (pos_courante, profondeur)
+            profondeur -= 1
+            labels[pos_courante] = str(arbre[0])
+            branches[0].append((pos_courante, pos_parent))
+            pos_gauche = pos_courante - 2**profondeur
+            parkour(arbre[1], noeuds, branches, labels, positions, profondeur, pos_gauche, pos_courante, null_node)
+            pos_droit = pos_courante + 2**profondeur
+            parkour(arbre[2], noeuds, branches, labels, positions, profondeur, pos_droit, pos_courante, null_node)
+        elif null_node:
+            noeuds[1].append(pos_courante)
+            positions[pos_courante] = (pos_courante, profondeur)
+            branches[1].append((pos_courante, pos_parent))
+
+    if not arbre:
+        return
+
+    branches = [[]]
+    profondeur = hauteur(arbre)
+    pos_courante = 2**profondeur
+    noeuds = [[pos_courante]]
+    positions = {pos_courante: (pos_courante, profondeur)}
+    labels = {pos_courante: str(arbre[0])}
+
+    if null_node:
+        branches.append([])
+        noeuds.append([])
+
+    profondeur -= 1
+    parkour(arbre[1], noeuds, branches, labels, positions, profondeur, pos_courante - 2**profondeur, pos_courante, null_node)
+    parkour(arbre[2], noeuds, branches, labels, positions, profondeur, pos_courante + 2**profondeur, pos_courante, null_node)
+
+    mon_arbre = nx.Graph()
+
+    if type(size) == int:
+        size = (size, size)
+
+    plt.figure(figsize=size)
+    nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[0], node_color="white", node_size=550, edgecolors="blue")
+    nx.draw_networkx_edges(mon_arbre, positions, edgelist=branches[0], edge_color="black", width=2)
+    nx.draw_networkx_labels(mon_arbre, positions, labels)
+
+    if null_node:
+        nx.draw_networkx_nodes(mon_arbre, positions, nodelist=noeuds[1], node_color="white", node_size=50, edgecolors="grey")
+        nx.draw_networkx_edges(mon_arbre, positions, edgelist=branches[1], edge_color="grey", width=1)
+
+    ax = plt.gca()
+    ax.margins(0.1)
+    plt.axis("off")
+    plt.show()
+
+
+repr_graph(arbre1,(4,3),False)
+
 
